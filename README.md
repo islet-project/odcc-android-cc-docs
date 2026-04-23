@@ -72,5 +72,5 @@ Our implementation is applied to AOSP 15 and runs on Arm CCA–enabled Android v
 As a concrete example, we present an end-to-end confidential computing workflow by integrating our framework into TensorFlow Lite BERT-QA, where an AI model operates entirely within a secure realm. The demonstration highlights the use of remote attestation, showcasing how sensitive data—specifically the AI model in this case—can be securely provisioned and stored on user devices. Furthermore, it illustrates how AI model inference is conducted confidentially, ensuring data privacy and security throughout the entire process.
 
 This repository hosts the source for the documentation site for confidential computing on Android.
-=======NEED URL MODIFICATION. =====
-📚 [Visit the docs](https://pages.github.sec.samsung.net/SYSSEC/odcc-android-cc-docs/intro.html)
+
+📚 [Visit the docs](https://islet-project.github.io/odcc-android-cc-docs/intro.html)
