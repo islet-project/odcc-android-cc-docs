@@ -21,11 +21,14 @@ jobs:
       PUBLISH_BRANCH: gh-pages
 
     steps:
+      # Private submodules: set repo (or org) secret SUBMODULES_CLONE_TOKEN to a PAT with
+      # read access to each dependency repo. When all are public, you can remove `token` below.
       - name: Checkout (with submodules)
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+          token: ${{ secrets.SUBMODULES_CLONE_TOKEN }}
 
       - name: Install Rust, mdBook, and mdbook-mermaid
         run: |
