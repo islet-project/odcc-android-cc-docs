@@ -3,7 +3,7 @@ name: Publish mdBook (preview branch)
 on:
   push:
     branches:
-      - main
+      - public_release
 
 permissions:
   contents: write
@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   build_and_publish:
-    runs-on: code-default
+    runs-on: ubuntu-latest
     env:
       # Test deploy only — does not touch production gh-pages. Point Pages at this
       # branch (or merge to gh-pages) when you want the preview URL to update.
@@ -27,8 +27,6 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      # No GitHub.com marketplace actions (GHES): rustup + cargo install only.
-      # Requires outbound HTTPS to static.rust-lang.org and crates.io (or org mirrors).
       - name: Install Rust, mdBook, and mdbook-mermaid
         run: |
           set -euo pipefail
