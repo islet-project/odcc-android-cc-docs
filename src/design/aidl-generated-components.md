@@ -15,7 +15,7 @@ Code generation for confidential computing on Android starts from the AIDL annot
 
 The `FQCN`(Fully Qualified Class Name) value is the key input used by the build-time generator.
 
-> For detailed integration steps, see [How to Integrate Confidential Computing into Android](./odcc-ccplugin.md).
+> For detailed integration steps, see [How to Integrate Confidential Computing into Android](../usage/odcc-ccplugin.md).
 
 ## 2) What is generated for CC Proxy
 
@@ -48,5 +48,5 @@ At runtime, CC Stub reads this generated value and uses it to initialize the tar
 In our example apps, generated components are placed in app-specific directories.  
 Please refer to the directories below in each example app repository:
 
-- **[odcc-example-aosp](https://github.sec.samsung.net/SYSSEC/odcc-example-aosp/tree/on-device-cc/OdccExampleServiceOrig/gen)**: `<odcc-example-aosp>/OdccExampleServiceOrig/gen`
-- **[odcc-tf-lite-bert-qa](https://github.sec.samsung.net/SYSSEC/odcc-tf-lite-bert-qa/tree/on-device-cc/gen)**: `<odcc-tf-lite-bert-qa>/gen`
+- **[odcc-example-aosp](https://github.com/islet-project/odcc-example-aosp/tree/main/OdccExampleServiceOrig/gen)**: `<odcc-example-aosp>/OdccExampleServiceOrig/gen`
+- **[odcc-tf-lite-bert-qa](https://github.com/islet-project/odcc-tf-lite-bert-qa/tree/main/gen)**: `<odcc-tf-lite-bert-qa>/gen`

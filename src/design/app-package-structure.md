@@ -11,7 +11,7 @@ At a high level, that APK contains:
 - CCProxyService and matching AndroidManifest entries so the host exposes the AIDL surface while the implementation executes in the Realm.
 - Realm-side support (CC Stub and related bootstrap) and metadata (for example a generated asset with the FQCN of the Java CC Service class) so the guest can launch the correct implementation.
 
-How CCPlugIn wires `aidl`, Soong, and generated sources is out of scope for this overview; see [How to Integrate Confidential Computing into Android](https://pages.github.sec.samsung.net/SYSSEC/odcc-android-cc-docs/usage/odcc-ccplugin.html) and [AIDL-generated components](./aidl-generated-components.md).
+How CCPlugIn wires `aidl`, Soong, and generated sources is out of scope for this overview; see [How to Integrate Confidential Computing into Android](../usage/odcc-ccplugin.md) and [AIDL-generated components](./aidl-generated-components.md).
 
 ## Confidential workload (inside the Realm)
 
