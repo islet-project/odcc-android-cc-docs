@@ -1,0 +1,17 @@
+[book]
+title = "Documentation for Confidential Computing on Android"
+authors = ["Sunwook Eom"]
+language = "en"
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output]
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "light"
+additional-js = [ "svg-pan-zoom.min.js", "zoom.js", "mermaid.min.js",  "mermaid-init.js" ]
+additional-css = [ "custom.css" ]
