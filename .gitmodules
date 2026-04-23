@@ -1,17 +1,18 @@
 [submodule "dependencies/odcc-islet-script-qemu-rme"]
 	path = dependencies/odcc-islet-script-qemu-rme
-	url = https://github.sec.samsung.net/SYSSEC/odcc-islet-script-qemu-rme.git
+	url = https://github.com/islet-project/odcc-islet-script-qemu-rme.git
+	branch = dev/release
 [submodule "dependencies/odcc-example-aosp"]
 	path = dependencies/odcc-example-aosp
-	url = https://github.sec.samsung.net/SYSSEC/odcc-example-aosp.git
+	url = https://github.com/islet-project/odcc-example-aosp.git
 	branch = main
 [submodule "dependencies/odcc-tf-lite-bert-qa"]
 	path = dependencies/odcc-tf-lite-bert-qa
-	url = https://github.sec.samsung.net/SYSSEC/odcc-tf-lite-bert-qa.git
+	url = https://github.com/islet-project/odcc-tf-lite-bert-qa.git
 [submodule "dependencies/odcc-ccplugin"]
 	path = dependencies/odcc-ccplugin
-	url = https://github.sec.samsung.net/SYSSEC/odcc-ccplugin.git
+	url = https://github.com/islet-project/odcc-ccplugin.git
 [submodule "dependencies/odcc-tf-lite-bert-qa-provisioning"]
 	path = dependencies/odcc-tf-lite-bert-qa-provisioning
-	url = https://github.sec.samsung.net/SYSSEC/odcc-tf-lite-bert-qa.git
+	url = https://github.com/islet-project/odcc-tf-lite-bert-qa.git
 	branch = provisioning
