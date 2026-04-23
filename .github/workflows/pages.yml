@@ -1,0 +1,69 @@
+name: Publish mdBook (preview branch)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    env:
+      # Test deploy only — does not touch production gh-pages. Point Pages at this
+      # branch (or merge to gh-pages) when you want the preview URL to update.
+      PUBLISH_BRANCH: gh-pages
+
+    steps:
+      # Private submodules: set repo (or org) secret SUBMODULES_CLONE_TOKEN to a PAT with
+      # read access to each dependency repo. When all are public, you can remove `token` below.
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          token: ${{ secrets.SUBMODULES_CLONE_TOKEN }}
+
+      - name: Install Rust, mdBook, and mdbook-mermaid
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
+          . "$HOME/.cargo/env"
+          cargo install mdbook mdbook-mermaid --locked
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+
+      - name: Build
+        run: mdbook build
+
+      - name: Prepare site root (disable Jekyll on GitHub Pages)
+        run: touch book/.nojekyll
+
+      - name: Publish to ${{ env.PUBLISH_BRANCH }}
+        run: |
+          set -euo pipefail
+
+          tar -C book -cf /tmp/book.tar .
+
+          git fetch origin "${PUBLISH_BRANCH}" || true
+
+          if git show-ref --quiet "refs/remotes/origin/${PUBLISH_BRANCH}"; then
+            git checkout "${PUBLISH_BRANCH}"
+          else
+            git checkout --orphan "${PUBLISH_BRANCH}"
+          fi
+
+          git rm -rf . >/dev/null 2>&1 || true
+          find . -maxdepth 1 -mindepth 1 -not -name ".git" -exec rm -rf {} +
+
+          tar -xf /tmp/book.tar -C .
+
+          git add -A
+          git -c user.name="github-actions" -c user.email="actions@users.noreply" \
+            commit -m "Publish mdBook" || true
+          git push -f origin "${PUBLISH_BRANCH}"
