@@ -1,0 +1,547 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AI Model Provisioning - Documentation for Confidential Computing on Android</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom-e13467ec.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "../searchindex-84b1c532.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-cd9db688.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Documentation for Confidential Computing on Android</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="ai-model-provisioining"><a class="header" href="#ai-model-provisioining">AI Model Provisioining</a></h1>
+<p>This repository contains the code of the TensorFlow Lite BERT QA application
+<a href="https://github.com/tensorflow/examples/tree/master/lite/examples/bert_qa/android">https://github.com/tensorflow/examples/tree/master/lite/examples/bert_qa/android</a>
+that has been adapted to the AOSP build system and provides a separate bound
+service implementing the main TF Lite BERT QA functionality.</p>
+<p>The service uses a provisioning mechanism to provision the TensorFlow Bert QA
+model from an external provisioning server.</p>
+<h2 id="source-code"><a class="header" href="#source-code">Source code</a></h2>
+<p>The source code of the application should be automatically downloaded into
+<code>external/odcc-tf-lite-bert-qa-provisioning</code> once the AOSP supporting CC
+services is downloaded using the steps below.</p>
+<h1 id="running-the-application-with-the-android-odcc-stack"><a class="header" href="#running-the-application-with-the-android-odcc-stack">Running the application with the Android ODCC stack</a></h1>
+<h2 id="android-odcc"><a class="header" href="#android-odcc">Android ODCC</a></h2>
+<p>We first need to checkout and setup the Android On Device Confidential Computing
+stack. The repository and steps we need to follow are here:
+<a href="https://github.com/islet-project/odcc-islet-script-qemu-rme">https://github.com/islet-project/odcc-islet-script-qemu-rme</a>.</p>
+<p>Please checkout that repository and follow the steps in its README. Before
+continuing here please make sure it runs successfully and you can connect to the
+the Android both through <code>adb shell</code> and graphically (e.g. with VNC).</p>
+<h2 id="environment-setup"><a class="header" href="#environment-setup">Environment setup</a></h2>
+<p>You should have checked out two repositories, the repository above and
+<a href="https://github.com/islet-project/islet">Islet</a> as instructed. Those two
+directories will be referenced throughout this README as <code>$ANDROID</code> and <code>$ISLET</code>
+respectively.</p>
+<p>We will need one more repository, so check it out now:
+https://github.com/islet-project/ratls. We’ll be referencing this repository as
+<code>$RATLS</code>.</p>
+<p>Also please make sure to setup the android development environment. Basically,
+in every shell that will run commands presented here please make sure to execute
+the following:</p>
+<pre><code>export ANDROID="/path/to/odcc-islet-script-qemu-rme"
+export ISLET="/path/to/islet-project/islet"
+export RATLS="/path/to/islet-project/ratls"
+
+cd "$ANDROID"/aosp-15.0.0_r8
+source build/envsetup.sh
+lunch aosp_cf_arm64_only_phone-trunk_staging-userdebug
+</code></pre>
+<p>The easiest way would be to write this (with correct paths) to some temporary
+file and source this file in every new terminal. With that all the commands
+presented in this README (bar one) can be copy &amp; pasted verbatim.</p>
+<p>The successful output of Android development environment setup should look like
+this:</p>
+<pre><code>============================================
+PLATFORM_VERSION_CODENAME=VanillaIceCream
+PLATFORM_VERSION=VanillaIceCream
+TARGET_PRODUCT=aosp_cf_arm64_only_phone
+TARGET_BUILD_VARIANT=userdebug
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=cortex-a53
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-6.8.0-106-generic-x86_64-Ubuntu-24.04.4-LTS
+HOST_CROSS_OS=linux_musl
+BUILD_ID=AP4A.241205.013.B1
+OUT_DIR=out
+============================================
+</code></pre>
+<h2 id="building-the-bertqa-application"><a class="header" href="#building-the-bertqa-application">Building the BertQa application</a></h2>
+<p>Now build the client and service applications:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+UNBUNDLED_BUILD_SDKS_FROM_SOURCE=true TARGET_BUILD_APPS="TfLiteBertQADemoProvisioning TfLiteBertQADemoServiceProvisioning" m apps_only dist
+</code></pre>
+<p>The resulting APK files are located in out/dist folder.</p>
+<ol>
+<li><code>out/dist/TfLiteBertQADemoProvisioning.apk</code></li>
+<li><code>out/dist/TfLiteBertQADemoServiceProvisioning.apk</code></li>
+</ol>
+<h2 id="gathering-measurements"><a class="header" href="#gathering-measurements">Gathering measurements</a></h2>
+<p>For provisioning to work we need attestation. And for attestation to work we
+need reference measurements that are going to be provisioned to the attestation
+verification services.</p>
+<p>Measurements consist of platform measurements (bootloaders, TF-A, Islet RMM,
+etc.) and realm measurements (realm, microdroid, application).</p>
+<h3 id="platform-reference-measurements"><a class="header" href="#platform-reference-measurements">Platform reference measurements</a></h3>
+<p>Platform measurements are in form of a CCA attestation token. To obtain the
+attestation token we need to run the android, then microdroid and execute a
+command on the microdroid environment.</p>
+<p><em>Terminal 1</em>:</p>
+<pre><code>cd "$ANDROID"
+./scripts/run_cuttlefish.sh "$ISLET"
+</code></pre>
+<p><em>Terminal 2</em>:</p>
+<pre><code>adb -s 0.0.0.0:6520 wait-for-device
+adb -s 0.0.0.0:6520 root
+adb -s 0.0.0.0:6520 shell setprop persist.avf.kvmtool true
+adb -s 0.0.0.0:6520 shell setprop persist.avf.realm true
+</code></pre>
+<p>After the above commands executed successfully wait a minute and run the
+microdroid, <em>Terminal 2</em>:</p>
+<pre><code>adb -s 0.0.0.0:6520 shell /apex/com.android.virt/bin/vm run-microdroid
+</code></pre>
+<p>After the microdroid has been booted (new logs on <em>Terminal 2</em> stop appearing)
+connect to microdroid and get the token.</p>
+<p><em>Terminal 3</em>:</p>
+<pre><code>vm_shell connect
+</code></pre>
+<p><em>Terminal 3</em> inside microdroid:</p>
+<pre><code>rsictl attest -o /data/token.bin
+exit
+</code></pre>
+<p>Download the token and stop the emulator, <em>Terminal 3</em>:</p>
+<pre><code>cd $ANDROID
+adb -s localhost:8000 pull /data/token.bin .
+stop_cvd
+</code></pre>
+<h3 id="realm-reference-measurements"><a class="header" href="#realm-reference-measurements">Realm reference measurements</a></h3>
+<p>Realm measurements are in a form of RIM (Realm Initial Measurement) and REMs
+(Realm Extensible Measurements) values. We provide tools for measuring those
+values.</p>
+<p>First build the tools:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+m realm_metadata_tool
+m microdroid_calculate_rem
+m ccservice_calculate_rem
+</code></pre>
+<p>Obtain <code>RIM</code>:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+realm_metadata_tool dump -i out/target/product/vsoc_arm64_only/apex/com.android.virt/etc/fs/microdroid_realm_metadata.bin | grep "^rim:"
+</code></pre>
+<p>Obtain <code>REM0</code>:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+microdroid_calculate_rem   --vbmeta-system-image out/target/product/vsoc_arm64_only/apex/com.android.virt/etc/fs/microdroid_vbmeta.img | grep "^REM0:"
+</code></pre>
+<p>Obtain <code>REM1</code>:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+ccservice_calculate_rem --main-apk out/dist/TfLiteBertQADemoServiceProvisioning.apk  \
+                        --apex-root-path ./out/soong/.intermediates/   \
+                        --extra-apk-root-path out/target/product/vsoc_arm64_only/system/ \
+                        --config-file-name vm_config.json
+</code></pre>
+<p>Please write down the 3 obtained values (<code>RIM</code>, <code>REM0</code>, <code>REM1</code>). We will need
+them in the next step.</p>
+<h2 id="provisioning-server"><a class="header" href="#provisioning-server">Provisioning server</a></h2>
+<p>We need to setup a server that will provision the model to the
+application/service over the network. This server resides with <code>ratls</code>
+repository we’ve checked out earlier. For it to work fully we need to setup
+everything with the measurements we’ve obtained earlier.</p>
+<h3 id="realm-reference-measurements-1"><a class="header" href="#realm-reference-measurements-1">Realm reference measurements</a></h3>
+<p>Realm measurements are handled directly by the provisioning server. Using the
+obtained RIM/REMs values set them as follows (<strong>this command needs to be amended,
+cannot be pasted as is</strong>):</p>
+<pre><code>export RIM="HEX_RIM_VALUE"
+export REM0="HEX_REM0_VALUE"
+export REM1="HEX_REM1_VALUE"
+</code></pre>
+<p>Now generate the file with reference realm measurements for use with the
+provisioning server:</p>
+<pre><code>cd "$RATLS"/tools/ratls-serve/ratls
+cat &gt; odcc.json &lt;&lt; EOF
+{
+    "version": "0.1",
+    "issuer": {
+        "name": "Samsung",
+        "url": "https://cca-realms.samsung.com/"
+    },
+    "realm": {
+        "uuid": "f7e3e8ef-e0cc-4098-98f8-3a12436da040",
+        "name": "Data Processing Service",
+        "version": "1.0.0",
+        "release-timestamp": "2026-03-24T09:00:00Z",
+        "attestation-protocol": "HTTPS/RA-TLSv1.0",
+        "port": 8088,
+        "reference-values": {
+            "rim": "$RIM",
+            "rems": [
+                [
+                    "$REM0",
+                    "$REM1",
+                    "0000000000000000000000000000000000000000000000000000000000000000",
+                    "0000000000000000000000000000000000000000000000000000000000000000"
+                ]
+            ],
+            "hash-algo": "sha-256"
+        }
+    }
+}
+EOF
+</code></pre>
+<h3 id="platform-reference-measurements-1"><a class="header" href="#platform-reference-measurements-1">Platform reference measurements</a></h3>
+<p>This requires Veraison services running and configured. This in turn requires to
+have <code>docker</code> and <code>go</code> installed and working.</p>
+<p>This step can be omitted in case of issues. We will have to disable Veraison
+usage in such case when running the provisioning server.</p>
+<p>Build and run the Veraison service. This process is mostly automated using the
+following script:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning/veraison
+./bootstrap.sh
+</code></pre>
+<p>We can check whether the Veraison has been run successfully with:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning/veraison
+source services/deployments/docker/env.bash
+veraison status
+</code></pre>
+<p>The command should output something like:</p>
+<pre><code>         vts: running
+provisioning: running
+verification: running
+  management: running
+    keycloak: running
+</code></pre>
+<p>We also need a public CPAK key that is used to verify the platform token. The
+token is generated and signed with the usage of private CPAK key by the HES
+service run in the background with the Android ODCC stack automatically.</p>
+<p>To obtain the CPAK public key:</p>
+<pre><code>cd "$ISLET"/hes/cpak-generator
+cargo run
+</code></pre>
+<p>We also need to build one tool used by scripts below:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning
+make bin/rocli
+</code></pre>
+<p>Now provision the already running Veraison with platform reference measurements
+and the public part of CPAK key:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning/veraison/provision
+./run.sh -t "$ANDROID"/token.bin -c "$ISLET"/hes/out/cpak_public.pem
+</code></pre>
+<p>We can see the the platform reference measurements and the public part of CPAK
+key inside Veraison with:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning/veraison
+source services/deployments/docker/env.bash
+veraison stores
+</code></pre>
+<h2 id="running-the-whole-stack"><a class="header" href="#running-the-whole-stack">Running the whole stack</a></h2>
+<h3 id="running-the-android-odcc-and-services"><a class="header" href="#running-the-android-odcc-and-services">Running the Android ODCC and services</a></h3>
+<p>First run the provisioning server. The model being provisioned is already
+included in the repository (<code>$RATLS/tools/ratls-serve/root/demo-model.tflite</code>).</p>
+<p><em>Terminal 1</em>:</p>
+<p>If we have Veraison service running and configured:</p>
+<pre><code>cd "$RATLS"/tools/ratls-serve
+cargo run -- -j ratls/odcc.json
+</code></pre>
+<p>If Veraison is not running:</p>
+<pre><code>cd "$RATLS"/tools/ratls-serve
+cargo run --features disable-veraison -- -j ratls/odcc.json
+</code></pre>
+<p>Run the Android with ODCC, <em>Terminal 2</em>:</p>
+<pre><code>cd "$ANDROID"
+./scripts/run_cuttlefish.sh "$ISLET"
+</code></pre>
+<p><em>Terminal 3</em>:</p>
+<pre><code>adb -s 0.0.0.0:6520 wait-for-device
+adb -s 0.0.0.0:6520 root
+adb -s 0.0.0.0:6520 shell setprop persist.avf.kvmtool true
+adb -s 0.0.0.0:6520 shell setprop persist.avf.realm true
+</code></pre>
+<p>Connect to the Android graphically and wait for it to boot completely, until the
+lock screen is visible.</p>
+<h3 id="running-the-bertqa-application"><a class="header" href="#running-the-bertqa-application">Running the BertQA application</a></h3>
+<p>When Android is up and running install the application we built previously:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+adb -s 0.0.0.0:6520 install-multi-package out/dist/TfLiteBertQADemoProvisioning.apk out/dist/TfLiteBertQADemoServiceProvisioning.apk
+</code></pre>
+<p>Unlock the screen, open the application launcher and run the first (the one on
+the left) <code>TFLite Bert Qa Demo</code> app. Alternatively you can do that from command
+line:</p>
+<pre><code>adb -s 0.0.0.0:6520 shell input keyevent KEYCODE_MENU
+adb -s 0.0.0.0:6520 shell am start org.tensorflow.lite.examples.bertqa/.MainActivity
+</code></pre>
+<p>Select an article. After you see the spinner you can observe the microdroid logs
+with:</p>
+<pre><code>adb -s 0.0.0.0:6520 shell tail -f /data/data/org.tensorflow.lite.examples.bertqaservice/files/console.txt
+</code></pre>
+<p>Wait a couple of minutes. You should see the microdroid VM booting in the
+logs. First the kernel, then the microdroid manager, application CC service and
+then the provisioning client that will download the model.</p>
+<p>You can see the provisioning process in the logs with lines similar to:</p>
+<pre><code>BertQaService: The model is being initialized
+BertQaService: Starting provisionOrInitModelFromFile()
+BertQaService: The TFLite Bert QA model doesn't exist in encryptedstore - start provisioning...
+54   130 I microdroid_manager: microdroid_manager::vm_payload_service: startProvisioning has been called https://192.168.97.1:1337/demo-model.tflite ca-cert.pem demo-model.tflite
+[INFO  ratls_get] Cli {
+        root_ca: "/mnt/apk/assets/ca-cert.pem",
+        url: "https://192.168.97.1:1337/demo-model.tflite",
+        output: "/mnt/encryptedstore/demo-model.tflite",
+        tls: RaTLS,
+        token: None,
+        cont: false,
+        retry: 3,
+    }
+[INFO  ratls::cert_resolver] Generating RSA 2048bit key.
+[INFO  ratls::cert_resolver] Finished generating RSA key.
+[INFO  ratls_get] Saving as: "/mnt/encryptedstore/demo-model.tflite"
+[INFO  ratls_get] Downloaded 100670436 bytes
+54   136 I microdroid_manager: microdroid_manager::vm_payload_service: Provisioning of https://192.168.97.1:1337/demo-model.tflite to demo-model.tflite succeded
+BertQaService: Provisioning of the TFLite Bert QA model has succeeded URL: https://192.168.97.1:1337/demo-model.tflite destination: demo-model.tflite
+BertQaService: Setup of TFLite Bert QA model
+BertQaService: The TFLite Bert QA model has been successfully initialized
+</code></pre>
+<p>The provisioning server on <em>Terminal 1</em> will also show the logs of a network
+connection, verification process and serving the model file.</p>
+<p>Of importance are lines like those:</p>
+<pre><code>[INFO  ratls::cert_verifier] Received client CCA token:
+[DEBUG reqwest::connect] starting new connection: https://localhost:8080/
+[INFO  veraison_verifier::verifier] Submod CCA_SSD_PLATFORM affirms token
+[INFO  veraison_verifier::verifier] Verification passed successfully
+[DEBUG realm_verifier] RIM match
+[DEBUG realm_verifier] REMs match
+[DEBUG realm_verifier] Hash algorithm match
+[DEBUG tower_http::trace::make_span] request; method=GET uri=/demo-model.tflite version=HTTP/1.1
+[DEBUG tower_http::trace::on_request] started processing request
+[INFO  ratls_serve::httpd] Handling payload request: demo-model.tflite
+[DEBUG tower_http::trace::on_response] finished processing request latency=0 ms status=200
+
+</code></pre>
+<p>Now, going back to the application UI, the spinner should disappear and we can
+select or write a question under the article and click the blue arrow at the
+bottom. Note that the inference process may also take several minutes.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../demo/odcc-tf-lite-bert-qa.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../implement/main.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../demo/odcc-tf-lite-bert-qa.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../implement/main.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../svg-pan-zoom-136752df.min.js"></script>
+        <script src="../zoom-d2cae294.js"></script>
+        <script src="../mermaid-eefea253.min.js"></script>
+        <script src="../mermaid-init-96415d6a.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

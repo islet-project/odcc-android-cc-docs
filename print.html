@@ -1,0 +1,2020 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Documentation for Confidential Computing on Android</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom-e13467ec.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "searchindex-84b1c532.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-cd9db688.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Documentation for Confidential Computing on Android</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="extending-confidential-computing-for-android"><a class="header" href="#extending-confidential-computing-for-android">Extending Confidential Computing for Android</a></h1>
+<p>Mobile applications increasingly handle sensitive data and security-critical workloads, including crypto wallets, digital identity, and on-device AI inference that leverages personal data to provide valuable, personalized experiences in users’ daily lives. As these use cases expand, stronger isolation guarantees than those offered by the traditional Trusted Execution Environments (TEEs) like Arm TrustZone are becoming necessary. This need applies not only to system and OEM-provided applications but also for the growing number of third-party apps installed from app stores that now routinely process sensitive information.</p>
+<p>To address this need and accelerate the adoption of confidential computing on end user devices, we extend the Android OS with confidential computing capabilities based on our <a href="https://github.com/islet-project/islet">Islet RMM</a> atop Arm CCA.</p>
+<p><img src="src/assets/apps_in_realm.png" alt="Conceptual View of Confidential Computing on Android"></p>
+<p>Our approach enables Android application code to run inside a realm (confidential VM). The core concepts of our design are:</p>
+<ul>
+<li>
+<p><em>Transparency to existing client applications</em></p>
+<p>Applications executing confidentially within a realm can seamlessly interact with client applications in the normal world, without requiring any modifications to client-side code.</p>
+</li>
+<li>
+<p><em>Developer-friendly confidential application model</em></p>
+<ul>
+<li>Confidential App parts can be developed using standard Android APIs, allowing developers to reuse existing knowledge without additional learning overhead.</li>
+<li>Existing applications can be incrementally adapted by migrating only security-critical components into a realm with minimal changes, such as annotating code or updating the manifest.</li>
+</ul>
+</li>
+<li>
+<p><em>Built on well-known foundation</em></p>
+<p>The design builds upon the Android Virtualization Framework and Microdroid as the execution environment for realms, leveraging a mature and production-ready infrastructure originally designed for launching and managing protected virtual machines.</p>
+</li>
+</ul>
+<h1 id="key-approach-ideas"><a class="header" href="#key-approach-ideas">Key Approach Ideas</a></h1>
+<p>The lift and shift approach of running an entire Android application inside a realm streamlines migration to CC-based execution, but it requires the full Android Runtime and tight interaction with normal-world Android OS components. This significantly increases system complexity, demands heavyweight runtime support, enlarges the attack surface, and requires intrusive modifications to core components such as the kernel, Binder, zygote, and system_server.</p>
+<p>We aim to preserve compatibility with Android Framework while maintaining App confidentiality and minimizing development friction.
+To achieve these goals, our design is built upon four core ideas.</p>
+<h2 id="i-code-split-for-lightweight-and-secure-execution"><a class="header" href="#i-code-split-for-lightweight-and-secure-execution">I. Code Split for Lightweight and Secure Execution</a></h2>
+<p>We adopt a code-splitting approach, where only the security-sensitive parts of the application are executed inside the realm, while the rest remains in the normal world. This design:</p>
+<ul>
+<li>Avoids modifications to core Android OS components.</li>
+<li>Enables a lightweight runtime within a realm.</li>
+<li>Reduces the attack surface.</li>
+</ul>
+<h2 id="ii-automated-inter-world-communication-via-aidl-based-binder-and-android-service-abstraction"><a class="header" href="#ii-automated-inter-world-communication-via-aidl-based-binder-and-android-service-abstraction">II. Automated Inter-World Communication via AIDL-Based Binder and Android Service Abstraction</a></h2>
+<p>To preserve existing application behavior and interfaces, we use the Android Service class as the unit of code splitting, as it naturally provides modular and reusable components while supporting communication across process boundaries via AIDL-based Binder IPC.</p>
+<p>While AIDL interfaces typically rely on the Android kernel’s Binder IPC for inter-process communication, they do not support communication between the Normal World and the Realm World. To bridge this gap, we provide an annotation that transforms a standard AIDL interface into one capable of inter-world communication. Applying this annotation automatically generates (1) a Service in the Normal World that handles Binder IPC requests, and (2) a corresponding interface that leverages Android’s RPC Binder over sockets, enabling method calls across the two worlds.</p>
+<p>By running as Android services inside the Realm, confidential components can be invoked by existing client applications without any modifications, just like regular Android services. This approach ensures transparency, modularity, and seamless integration with existing applications.</p>
+<p><img src="src/assets/aidl_app_interface.png" alt="AIDL-based App Interface"></p>
+<p>The detailed design of transparent invocation of realm services from the normal world is described in later chapters.</p>
+<h2 id="iii-seamless-integration-with-cc"><a class="header" href="#iii-seamless-integration-with-cc">III. Seamless Integration with CC</a></h2>
+<p>Our framework provides comprehensive integration with Arm CCA through the Islet RMM, enabling Android services to leverage hardware-rooted security primitives. Key CC services include remote attestation for runtime integrity verification, secure provisioning for trusted asset delivery, secret derivation with specialized sealing keys and encrypted storage for persistent data protection. Services can generate device-unique secrets through the hardware-protected key hierarchy and use sealing mechanisms to encrypt data that is cryptographically bound to the specific realm and platform configuration. This ensures that sealed data can only be unsealed by the same realm running on the same platform with the same security configuration.</p>
+<p>These capabilities work together to provide a seamless confidential computing environment that preserves compatibility with existing Android development practices while delivering strong hardware-enforced security guarantees for protecting sensitive application data and operations.</p>
+<h2 id="iv-lightweight-runtime-without-full-android-framework"><a class="header" href="#iv-lightweight-runtime-without-full-android-framework">IV. Lightweight Runtime Without Full Android Framework</a></h2>
+<p>To minimize the attack surface and enable fast startup, we remove the dependency on the full Android Runtime inside the realm.
+Instead, we construct a lightweight execution environment that:</p>
+<ul>
+<li>Directly instantiates application classes.</li>
+<li>Executes Java application logic using only the Dalvik VM from Android ART.</li>
+<li>Eliminates unnecessary Android framework dependencies.</li>
+</ul>
+<p>This enables efficient execution of Java-based Android application code inside the realm with minimal overhead. Implementation details are discussed in Chapters 3 and 4.</p>
+<h1 id="demonstration"><a class="header" href="#demonstration">Demonstration</a></h1>
+<p>Our implementation is applied to AOSP 15 and runs on Arm CCA–enabled Android virtual devices (Cuttlefish).</p>
+<p>As a concrete example, we present an end-to-end confidential computing workflow by integrating our framework into TensorFlow Lite BERT-QA, where an AI model operates entirely within a secure realm. The demonstration highlights the use of remote attestation, showcasing how sensitive data—specifically the AI model in this case—can be securely provisioned and stored on user devices. Furthermore, it illustrates how AI model inference is conducted confidentially, ensuring data privacy and security throughout the entire process.</p>
+<p>This repository hosts the source for the documentation site for confidential computing on Android.</p>
+<p>📚 <a href="https://islet-project.github.io/odcc-android-cc-docs/intro.html">Visit the docs</a></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="architecture-overview"><a class="header" href="#architecture-overview">Architecture Overview</a></h1>
+<p>This document describes how the system extends Android to support confidential computing by allowing selected app code to run inside a protected execution environment.</p>
+<p>The architecture enables an Android service to execute inside a Realm VM while still being exposed to client applications through the standard Binder IPC mechanism.
+From the perspective of the client, the service behaves like a regular Android bound service, while its implementation runs in an isolated environment.</p>
+<p><img src="assets/android-cc-architecture-overview.png" alt="Architecture Diagram"></p>
+<h2 id="execution-domains"><a class="header" href="#execution-domains">Execution Domains</a></h2>
+<h3 id="normal-world-host-android"><a class="header" href="#normal-world-host-android">Normal World (Host Android)</a></h3>
+<p>Runs full Android, hosts the entry point for confidential services, manages the Realm VM lifecycle, and bridges communication with services running in the Realm.</p>
+<h3 id="realm-world-confidential-world-running-realm-vms"><a class="header" href="#realm-world-confidential-world-running-realm-vms">Realm World (Confidential World running Realm VMs)</a></h3>
+<p>Provides a hardware-assisted isolated environment for sensitive code and data.
+It runs a minimal Android-based runtime on Microdroid, initializing only the components needed for service execution, including a lightweight Dalvik VM for Java-based services.</p>
+<h2 id="components"><a class="header" href="#components">Components</a></h2>
+<h3 id="confidential-computing-components"><a class="header" href="#confidential-computing-components">Confidential Computing Components</a></h3>
+<p>These components are implemented as part of this system and provide the integration between Android and the confidential execution environment.</p>
+<ul>
+<li>
+<p><strong>CC Proxy</strong>:
+CC Proxy is an Android bound service that runs in the Normal World and serves as the entry point for all client interactions.
+It exposes the service interface using AIDL, allowing client applications to bind and invoke methods using standard Android IPC.
+Internally, CC Proxy is responsible for forwarding these requests to the Realm VM.
+In addition to request forwarding, CC Proxy manages the lifecycle of the Realm VM.
+It uses an internal helper (VmManager) to coordinate VM creation, startup, and connection to the Realm-side service.
+By handling both IPC bridging and lifecycle management, CC Proxy allows the confidential service to appear indistinguishable from a regular Android service.</p>
+</li>
+<li>
+<p><strong>CC Stub</strong>:
+CC Stub runs in the Realm World and acts as the server-side counterpart to CC Proxy.
+It receives incoming Binder RPC calls over vsock from the Normal World, and dispatches them to the appropriate service implementation.
+It also handles service initialization and binding within the Realm environment.
+This separation ensures that communication logic remains isolated from the actual business logic, allowing service implementations to remain simple and unchanged.</p>
+</li>
+<li>
+<p><strong>CC Service</strong>:
+CC Service is the confidential code implemented by app developers and runs inside the Realm VM.
+It follows the standard Android bound service model, with an AIDL-defined interface and a Java-based implementation.
+Because the execution model closely matches that of a regular Android service, existing code can often be reused with minimal or no modification.
+The main difference is that the service executes in a protected environment and is accessed remotely via Binder RPC.</p>
+</li>
+<li>
+<p><strong>Provisioning Client</strong>:
+The Provisioning Client runs inside the Realm World and is responsible for provisioning confidential data from external Provisioning Servers. It is controlled by the Microdroid Manager, which executes it once a CC Service requests the provisioning operation. During the provisioning operation, the Provisioning Client establishes a secure channel with an external Provisioning Server using the RA-TLS protocol (a protocol that combines Remote Attestation with TLS). Once the secure channel is established, the Provisioning Client downloads confidential data into the location inside the encrypted storage mount point requested by the CC Service.</p>
+</li>
+<li>
+<p><strong>encryptedstore</strong>:
+The encryptedstore is an AVF <a href="https://android.googlesource.com/platform/packages/modules/Virtualization/+/refs/tags/android-15.0.0_r8/guest/encryptedstore/">Encrypted Store</a> mechanism that provides CC Services with persistence and confidentiality of data at rest. The encrypted storage uses a virtual block device on the guest, which is backed by a disk image file stored on the host. In our solution, the encryption keys used by encryptedstore are derived from the Realm Sealing Key (which is rooted in a Hardware Unique Key and is bound to the Realm authority and identity data) and are also bound to the Microdroid and CC Service application authority data. This ensures that only a particular CC Service that saved the data in encryptedstore on a particular hardware platform can access it.</p>
+</li>
+</ul>
+<h3 id="platform-components"><a class="header" href="#platform-components">Platform Components</a></h3>
+<p>The system relies on several existing platform components that provide virtualization and isolation capabilities.</p>
+<ul>
+<li>
+<p><strong>Android Virtualization Service</strong>:
+The Virtualization Service is part of Android and provides APIs for managing virtual machines.
+In this architecture, it is used by CC Proxy to create and control the Realm VM. It handles tasks such as VM initialization, resource allocation, and lifecycle management.
+By relying on this existing service, the system avoids introducing a custom VM management layer and remains aligned with Android’s virtualization framework.</p>
+</li>
+<li>
+<p><strong>KVM/lkvm</strong>:
+KVM provides the underlying virtualization support at EL2.
+It is responsible for running the Realm VM and ensuring that it is properly isolated from the host system.
+With CCA-related extensions, KVM enables the creation of protected execution environments backed by hardware.</p>
+</li>
+<li>
+<p><strong>Realm Management Monitor (RMM)</strong>:
+lset-RMM is part of the confidential computing platform that supports the Arm CCA and is responsible for managing Realm execution.
+It handles operations such as Realm creation, execution, and termination, and works with the hypervisor to enforce isolation guarantees between the Normal World and the Realm World.</p>
+</li>
+<li>
+<p><strong>Microdroid</strong>:
+Microdroid is Android’s minimal guest image for protected VMs under the Android Virtualization Framework.
+A mini-Android OS for protected VMs (pVMs) that loads a main binary and shared libraries from an APK, activates APEX modules on the guest, builds native code against Bionic, and uses Binder RPC over vsock for IPC—rather than shipping full-device Android.</p>
+</li>
+</ul>
+<h3 id="aidl-engine-behind-the-scene"><a class="header" href="#aidl-engine-behind-the-scene">AIDL Engine Behind the Scene</a></h3>
+<p>The AIDL Engine has been extended with a new feature that automates the integration between the Normal World and the Realm World.</p>
+<p>When an AIDL interface is annotated with <code>@GenerateCCService</code>, the engine generates the necessary glue code, including the CC Proxy and CC Stub components.
+This removes the need for developers to manually implement cross-domain communication logic.</p>
+<p>As a result, developers can focus on defining service interfaces and implementing business logic, while the system handles the underlying infrastructure.</p>
+<h3 id="inter-world-communication"><a class="header" href="#inter-world-communication">Inter-world Communication</a></h3>
+<p>Communication between the Normal World and the Realm World is implemented using a layered Binder stack:
+Binder IPC between client applications and CC Proxy, and Binder RPC to extend Binder semantics across process and VM boundaries.
+This design allows the system to preserve the familiar Binder programming model while enabling communication across isolated environments.</p>
+<h2 id="service-interaction-diagrams-high-level"><a class="header" href="#service-interaction-diagrams-high-level">Service interaction diagrams (high level)</a></h2>
+<p>A typical request flows through the system as follows:</p>
+<h3 id="cc-service-startup"><a class="header" href="#cc-service-startup">CC Service startup</a></h3>
+<pre class="mermaid">sequenceDiagram
+    autonumber
+    box Normal World (Android)
+      participant C as Client App
+      participant P as CCProxyService
+      participant V as VmManager
+      participant VM as VirtualMachine
+      participant VS as VirtualizationService (Host)
+      participant VMM as VirtualMachineManager
+      participant VMGR as virtmgr
+    end
+    box Realm (Guest Realm VM hosting Microdroid)
+      participant MM as MicrodroidManager (Guest)
+      participant CCS as CCStub
+      participant CCSE as CCService (User Java)
+    end
+
+    %% ---------- Boot &amp; Connect Phase ----------
+    Note over P, V: CCPlugIn
+    Note over VM, VMM: framework-virtualization library
+    Note over CCS, CCSE: Microdroid launcher/payload
+    C-&gt;&gt;C: context.bindService()
+    C--&gt;&gt;P: onCreate() (via Activity Manager)
+    note over V: Initialize VirtualMachineConfig
+    P-&gt;&gt;V:setVmServiceCallback()
+    P-&gt;&gt;V:vmRun()
+    V-&gt;&gt;VMM:getOrCreate(VirtualMachineConfig, ...)
+    VMM-&gt;&gt;VM:create(VirtualMachineConfig, ...)
+    activate VM
+    VM-&gt;&gt;VS:getInstance()
+    VS-&gt;&gt;VS:nativeSpawn()
+    VS-)VMGR: spawn process
+    activate VMGR
+    VMGR--&gt;&gt;VS: clientFd
+    VS-&gt;&gt;VS:nativeConnect(clientFd)
+    VS--&gt;&gt;VM: VirtualMachine instance
+    Note over VM: Initialize InstanceId, instance and encryptedstore partitions
+    VM--&gt;&gt;VMM: VirtualMachine instance
+    deactivate VM
+    VMM--&gt;&gt;V: VirtualMachine instance
+    V-&gt;&gt;VM:run()
+    Note over VM: Prepare vm config, setup console for virtmgr
+    VM-&gt;&gt;VMGR:createVm(config, consolein, consoleout, ...)
+    VMGR--&gt;&gt;VM: IVirtualMachine instance
+    VM-&gt;&gt;VMGR: IVirtualMachine.registerCallback()
+    VM-&gt;&gt;VMGR: IVirtualMachine.start()
+    V-&gt;&gt;VM:setCallback()
+    VMGR-&gt;&gt;VMGR: start lkvm (with Arm CCA Realms enabled)
+    VMGR-&gt;&gt;MM: lkvm launches Microdroid in Realm VM
+    activate MM
+    MM-&gt;&gt;MM: try_run_payload()
+    MM-)CCS: spawn Microdroid Launcher/NativeStub
+    activate CCS
+    MM--&gt;&gt;VMGR: notifyPayloadStarted()
+    VMGR--&gt;&gt;VM: onPayloadStarted()
+    VM--&gt;&gt;V: onPayloadStarted()
+    CCS-)CCSE: load and initialize CCService (DEX)
+    activate CCSE
+    note left of CCS: The VSOCK port of the Service is exposed to the host
+    CCS--&gt;&gt;CCS: Setup Binder RPC/VSOCK server
+    CCSE--&gt;&gt;MM: AVmPayload_notifyPayloadReady()
+    MM--&gt;&gt;VMGR: notifyPayloadReady()
+    VMGR--&gt;&gt;VM: onPayloadReady()
+    VM--&gt;&gt;V: onPayloadReady()
+    V-&gt;&gt;VM: connectToVsockServer()
+    Note over VM, CCS: The CC Proxy Service establishes Binder RPC connection over VSOCK with the CC Stub obtaining IBinder reference to IRealmService Stub
+    VM--xCCS: Binder RPC over VSOCK
+    VM--&gt;&gt;V: IBinder reference to IRealmService
+    V-&gt;&gt;P: onVmServiceReady(IRealmService reference)
+    P-&gt;&gt;CCS: IRealmService.onBindForTargetService()
+    CCS-&gt;&gt;CCSE: onCreate()
+    CCS-&gt;&gt;CCSE: onBind()
+    CCSE--&gt;&gt;CCS: IBinder reference to CC Service
+    CCS--&gt;&gt;P: IBinder reference to CC Service
+    note left of P: CCProxyService got the IBinder reference to CC Service,&lt;br&gt;it is now ready to work
+    deactivate CCSE
+    deactivate CCS
+    deactivate MM
+    deactivate VMGR
+</pre>
+
+<h3 id="end-to-end-call-path-example-call"><a class="header" href="#end-to-end-call-path-example-call">End-to-end call path (example call)</a></h3>
+<p>From the client’s perspective, the interaction is identical to calling a regular Android service. The cross-domain communication is handled transparently by the system.</p>
+<pre class="mermaid">sequenceDiagram
+    autonumber
+    box Normal World (Android)
+      participant C as Client App
+      participant P as CCProxyService
+    end
+    box Realm (Guest Realm VM hosting Microdroid)
+      participant CCSE as CCService (User Java)
+    end
+
+    %% ---------- End to End call ----------
+    C-&gt;&gt;C: context.bindService(ServiceConnection instance)
+    C--&gt;&gt;P: onCreate() (via Activity Manager)
+    Note over P: Here are the steps related to startup of VM and CC Service inside VM&lt;br&gt;(details are on the CC Service startup diagram)
+    C-&gt;&gt;P: onBind() (via Activity Manager)
+    P--&gt;&gt;C: ServiceConnection.onServiceConnected(IExampleInterface proxy)(via Activity Manager)
+    C-&gt;&gt;C: Add button is clicked
+    C-&gt;&gt;C: Parse a and b values from text fields
+    Note over P: addInt() is implemented by CC Proxy's IExampleInterface.Stub
+    C-&gt;&gt;P: addInt(a, b)
+    activate P
+    Note over CCSE: addInt() is implemented by CC Service's IExampleInterface.Stub
+    P-&gt;&gt;CCSE: addInt(a, b)
+    activate CCSE
+    CCSE--&gt;&gt;P: result
+    deactivate CCSE
+    P--&gt;&gt;C: result
+    C--&gt;&gt;C: Display result
+    deactivate P
+</pre>
+
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aidl-generated-components-for-confidential-computing-on-android"><a class="header" href="#aidl-generated-components-for-confidential-computing-on-android">AIDL-Generated Components for Confidential Computing on Android</a></h1>
+<p>This document explains which components are generated by the AIDL tool and why they are generated.</p>
+<p><img src="assets/aidl_app_interface_full.png" alt="AIDL Generataion Diagram"></p>
+<h2 id="1-source-annotation"><a class="header" href="#1-source-annotation">1) Source annotation</a></h2>
+<p>Code generation for confidential computing on Android starts from the AIDL annotation:</p>
+<pre><code class="language-java">@GenerateCCService(FQCN="com.example.RandGenService")
+</code></pre>
+<p>The <code>FQCN</code>(Fully Qualified Class Name) value is the key input used by the build-time generator.</p>
+<blockquote>
+<p>For detailed integration steps, see <a href="#apply-android-cc-to-your-service-with-ccplugin">How to Integrate Confidential Computing into Android</a>.</p>
+</blockquote>
+<h2 id="2-what-is-generated-for-cc-proxy"><a class="header" href="#2-what-is-generated-for-cc-proxy">2) What is generated for CC Proxy</a></h2>
+<p>For host-side CC Proxy, the AIDL tool generates:</p>
+<ol>
+<li><strong>CCProxyService</strong></li>
+<li><strong>AndroidManifest</strong> for the proxy service</li>
+</ol>
+<p>Both are generated using the annotation <code>FQCN</code> value as the service identity.</p>
+<h3 id="why-this-is-required"><a class="header" href="#why-this-is-required">Why this is required</a></h3>
+<p>Even after a service provider moves the target service to the Realm, existing client apps must still be able to call <code>bindService(...)</code> with the <strong>same FQCN</strong> they already use.</p>
+<p>By generating them from the same <code>FQCN</code>, we preserve client compatibility:</p>
+<ul>
+<li>clients keep the same binding target</li>
+<li>AIDL call paths continue to work without client-side changes</li>
+</ul>
+<h2 id="3-what-is-generated-for-cc-stub"><a class="header" href="#3-what-is-generated-for-cc-stub">3) What is generated for CC Stub</a></h2>
+<p>CC Stub is responsible for initializing the CC Service in the Realm. To do that, it must know the target service class identity (<code>FQCN</code>).</p>
+<p>So, at build time, the AIDL tool generates an <strong>asset file</strong> that contains the target service <code>FQCN</code> (again from <code>@GenerateCCService(...)</code>).</p>
+<p>At runtime, CC Stub reads this generated value and uses it to initialize the target CC Service.</p>
+<h2 id="4-where-to-find-generated-files-in-example-apps"><a class="header" href="#4-where-to-find-generated-files-in-example-apps">4) Where to find generated files in example apps</a></h2>
+<p>In our example apps, generated components are placed in app-specific directories.<br>Please refer to the directories below in each example app repository:</p>
+<ul>
+<li><strong><a href="https://github.com/islet-project/odcc-example-aosp/tree/main/OdccExampleServiceOrig/gen">odcc-example-aosp</a></strong>: <code>&lt;odcc-example-aosp&gt;/OdccExampleServiceOrig/gen</code></li>
+<li><strong><a href="https://github.com/islet-project/odcc-tf-lite-bert-qa/tree/main/gen">odcc-tf-lite-bert-qa</a></strong>: <code>&lt;odcc-tf-lite-bert-qa&gt;/gen</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="app-package-structure"><a class="header" href="#app-package-structure">App Package Structure</a></h1>
+<p>Confidential computing splits logic across the Normal World and the Realm, but from a host packaging perspective the integrator ships one Android application package (APK)** for the application that integrates CCPlugIn. That package is installed and launched like any other host app; it carries the host-side entry points (including CC Proxy) together with the Realm-side service implementation and glue. Client applications are external: any third-party or first-party app that already uses <code>bindService</code> against the published component name continues to do so without being part of this APK.</p>
+<p>Inside the Realm, Microdroid runs a confidential workload made up of the same APK (mounted on the guest as the application image) plus APEX modules that the guest is configured to activate. That workload is what Microdroid Manager attaches and starts so the CC Service and CC Stub can execute in isolation.</p>
+<h2 id="contents-of-the-cc-enabled-application-apk"><a class="header" href="#contents-of-the-cc-enabled-application-apk">Contents of the CC-enabled application APK</a></h2>
+<p>At a high level, that APK contains:</p>
+<ul>
+<li>CCProxyService and matching AndroidManifest entries so the host exposes the AIDL surface while the implementation executes in the Realm.</li>
+<li>Realm-side support (CC Stub and related bootstrap) and metadata (for example a generated asset with the FQCN of the Java CC Service class) so the guest can launch the correct implementation.</li>
+</ul>
+<p>How CCPlugIn wires <code>aidl</code>, Soong, and generated sources is out of scope for this overview; see <a href="#apply-android-cc-to-your-service-with-ccplugin">How to Integrate Confidential Computing into Android</a> and <a href="#aidl-generated-components-for-confidential-computing-on-android">AIDL-generated components</a>.</p>
+<h2 id="confidential-workload-inside-the-realm"><a class="header" href="#confidential-workload-inside-the-realm">Confidential workload (inside the Realm)</a></h2>
+<p>The confidential workload is the combination of that APK (CC Service and related code) and the APEX set supplied for the guest. The APEX layer is dominated by the ART modular runtime (typically the <code>com.android.art</code> APEX in AOSP builds) so Java/DEX-based CC Services can run inside Microdroid; additional APEX modules may be included when the build or guest configuration requires extra modular platform pieces (for example further libraries or services exposed as APEX on the host). Those modules are activated on the guest alongside the APK according to the Android Virtualization Framework / Microdroid guest model.</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Deliverable</th><th>Runs where</th><th>Role</th></tr>
+</thead>
+<tbody>
+<tr><td>External client apps</td><td>Normal World</td><td>Unchanged <code>bindService</code> to the exported AIDL service; not part of the CC-enabled application’s package</td></tr>
+<tr><td>CC-enabled application APK</td><td>Normal World + guest image source</td><td>Host: CC Proxy / VM control; Realm: CC Service + Stub</td></tr>
+<tr><td>APEX modules with the confidential workload</td><td>Realm (Microdroid guest)</td><td>ART (Java/DEX runtime) and any other declared modular dependencies the guest needs beyond the APK</td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="arm-cca-and-microdroid-integration"><a class="header" href="#arm-cca-and-microdroid-integration">Arm CCA and Microdroid Integration</a></h1>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>This document describes the integration of <strong>ARM Confidential Compute Architecture (CCA)</strong> with <strong>Microdroid</strong> as part of <strong>Android Virtualization Framework (AVF)</strong>. The integration enables secure execution of <a href="https://developer.android.com/develop/background-work/services/bound-services">Android bound services</a> within isolated realms while maintaining compatibility with existing Android development practices. Key aspects of this integration include a robust <strong>sealing key</strong> derivation mechanism partially based on the <strong>Open profile for DICE</strong> (Device Identifier Composition Engine) specification and an ARM CCA-compliant <strong>remote attestation</strong> process that ensures system integrity from boot to runtime.</p>
+<h2 id="sealing-key-derivation"><a class="header" href="#sealing-key-derivation">Sealing Key Derivation</a></h2>
+<p>The derivation of secrets (encryption/sealing keys) in the Android Virtualization Framework (AVF) and Microdroid relies on the <a href="https://pigweed.googlesource.com/open-dice/+/HEAD/docs/specification.md"><strong>Open Profile for DICE</strong></a>  and <a href="https://pigweed.googlesource.com/open-dice/+/HEAD/docs/android.md"><strong>Android Profile for DICE</strong></a> specifications, which provide a standardized approach to cryptographic key derivation in layered software systems.</p>
+<p>In our solution, we combine the <strong>Islet RMM</strong> sealing key derivation process with the DICE Sealing key derivation in Microdroid Manager. The diagram in Figure 1 illustrates how the existing architecture has been adapted to implement our sealing key derivation mechanism within the Microdroid environment.</p>
+<p><img src="assets/sealing-key-derivation.png" title="large-view" alt="Sealing key derivation">
+<em>Figure 1: Sealing key derivation process in the original AVF and our solution</em></p>
+<h3 id="process-overview"><a class="header" href="#process-overview">Process Overview</a></h3>
+<p>The sealing key derivation process is a multi-stage procedure that ensures cryptographic keys are securely bound to specific realm and payload identities while maintaining resistance to unauthorized access and tampering. The process in Microdroid begins with the retrieval of a <strong>Realm Sealing Key</strong> from the <strong>Islet RMM</strong> through the <strong>Realm Service Interface</strong> (RSI) kernel driver by the first stage init process.</p>
+<h3 id="detailed-derivation-steps"><a class="header" href="#detailed-derivation-steps">Detailed Derivation Steps</a></h3>
+<ol>
+<li>
+<p><strong>Realm Sealing Key Retrieval</strong>: The Islet RMM provides a <strong>Realm Sealing Key</strong> that is cryptographically bound to the realm’s authority data (Check the definition of Authority data in <a href="https://pigweed.googlesource.com/open-dice/+/HEAD/docs/specification.md#input-values">Open Profile for DICE</a>), which includes the identity of the realm developer and the realm identity itself. This binding is achieved through the “Realm Metadata” mechanism, ensuring that the key remains resistant to realm updates such as kernel or initrd image modifications.</p>
+</li>
+<li>
+<p><strong>Microdroid Sealing Key Generation</strong>: During the first-stage initialization process, the Realm Sealing Key serves as the <strong>Input Keying Material</strong> (IKM) for an <strong>HKDF</strong> (HMAC-based Key Derivation Function) operation. The authority data of the system image (Microdroid system image) is incorporated as additional input material to derive the <strong>Microdroid Sealing Key</strong>.</p>
+</li>
+<li>
+<p><strong>Secure Key Transfer</strong>: The derived <strong>Microdroid Sealing Key</strong> is securely transferred to the Microdroid environment through a dedicated file stored on a separate, protected partition. This isolation ensures that the key material is not accessible to other system components during the boot process.</p>
+</li>
+<li>
+<p><strong>System Initialization</strong>: After the secure key transfer, the initialization process mounts the system partition and launches the <strong>Microdroid Manager</strong>, which is responsible for the next stage of key derivation.</p>
+</li>
+<li>
+<p><strong>DICE-based Key Derivation</strong>: The Microdroid Manager utilizes the received sealing key as input for the existing DICE-based sealing key derivation process. This process generates separate keys for:</p>
+<ul>
+<li>Encrypted storage (encryptedstore)</li>
+<li>CC Service (Microdroid payload in AVF nomenclature)</li>
+</ul>
+</li>
+<li>
+<p><strong>Key Destruction and Binding</strong>: Upon successful derivation of the required keys, the <strong>Microdroid Sealing Key</strong> is securely destroyed to minimize exposure. The final derived keys for the CC Service and encrypted storage are cryptographically bound to the authority data of:</p>
+<ul>
+<li>The provided APK (containing the Confidential Computing Service)</li>
+<li>Associated APEX packages (such as the ART runtime)</li>
+</ul>
+<p>These components collectively form the Microdroid Payload, ensuring that the derived keys are uniquely tied to the specific service implementation and its concrete dependencies.</p>
+</li>
+</ol>
+<h2 id="remote-attestation"><a class="header" href="#remote-attestation">Remote Attestation</a></h2>
+<p>The Android Virtualization Framework originally utilized the Open Profile for DICE specification to generate certificate chains containing evidence of system integrity. In the standard AVF implementation, the DICE chains are used in a remote attestation process that typically involves a two-phase approach with the <a href="https://source.android.com/docs/core/ota/modular-system/remote-key-provisioning"><strong>Remote Key Provisioning</strong></a> (RKP) Mechanism and an external RKP server.</p>
+<h3 id="arm-cca-integration-approach"><a class="header" href="#arm-cca-integration-approach">ARM CCA Integration Approach</a></h3>
+<p>In our implementation, we have adopted the <strong>ARM Confidential Compute Architecture</strong> (CCA) methodology for remote attestation to better align with the hardware security features provided by ARM platforms. This approach requires careful consideration of how system measurements are captured and represented in the attestation token to accurately reflect the initial state of the realm.</p>
+<p>This document only briefly describes the concepts of Arm CCA architecture. For more information, the reader should refer to the <a href="https://developer.arm.com/documentation/DEN0096/latest/"><strong>Arm CCA Security Model</strong></a> document. Regarding the detailed specification of <strong>Realm Management Monitor</strong> (Islet RMM implements that specification) and the format of the CCA attestation evidence, essential information can be found in <a href="https://developer.arm.com/documentation/den0137/1-0rel0/?lang=en"><strong>ARM Realm Management Monitor specification</strong></a> document.</p>
+<p>The Arm CCA attestation evidence is called <strong>CCA attestation token</strong> and it contains two cryptographically signed documents:</p>
+<ul>
+<li><strong>CCA platform token</strong></li>
+<li><strong>Realm token</strong></li>
+</ul>
+<img alt="Attestation token format" src="assets/attestation-token.png" width="80%" />
+<p><em>Figure 2: Attestation token format according to Arm RMM Specification (DEN0137, 1.0-rel0)</em></p>
+<p>The <strong>CCA platform token</strong> contains information (claims) about hardware and firmware components that constitute <strong>CCA platform</strong>. This includes a challenge (it contains a cryptographic binder to the Realm token, i.e., the hash of the public key used to verify Realm attestation token), platform identity information (implementation and instance id), lifecycle (e.g. debug mode is enabled), the list of measurements of software/firmware components (name, version, hash, signed id). The <strong>CCA platform token</strong> is generated by <strong>Hardware Enforced Security</strong> (HES) module and is signed using a dedicated key embedded in the HES.</p>
+<p>The <strong>Realm token</strong> contains information about a Realm. Specifically, it contains <strong>Realm Initial Measurement</strong> (RIM) that is a fingerprint of initial memory content of a Realm right before launching it. There are also four <strong>Realm Extensible Measurement</strong> slots that can be extended by the software components running in a realm during runtime. Apart from measurements, the Realm token contains a challenge, which is a unique nonce coming from an external Relying Party or Verifier that allows to prove the freshness of the attestation evidence. It also contains a <strong>Realm Public Key</strong> (RAK) that is used to verify the integrity and authenticity of the Realm token (the realm token is signed by Islet RMM using a dedicated <strong>Realm Attestation Key</strong> retrieved from the <strong>HES</strong>).</p>
+<h3 id="measurement-architecture"><a class="header" href="#measurement-architecture">Measurement Architecture</a></h3>
+<p>To ensure comprehensive attestation of the system state, we have implemented a multi-layered measurement approach that captures critical system components at different stages of the boot process:</p>
+<h4 id="islet-rmm"><a class="header" href="#islet-rmm">Islet RMM</a></h4>
+<p>The Islet RMM measures the initial content of a realm and reflects it in the <strong>Realm Initial Measurement</strong> (RIM). In the current architecture, the initial realm content contains: the Linux kernel image, the init RAM disk image, and the Device Tree Blob (DTB).</p>
+<h4 id="first-stage-initialization-process"><a class="header" href="#first-stage-initialization-process">First-Stage Initialization Process</a></h4>
+<p>The first-stage init process is responsible for measuring the system image, which contains the <strong>Microdroid Manager</strong> and other critical system components. This measurement is extended into <strong>Realm Extensible Measurement 0</strong> (REM0) before the system image is mounted and the Microdroid Manager is launched. This ensures that the integrity of core system components is captured in the attestation evidence.</p>
+<h4 id="microdroid-manager-measurements"><a class="header" href="#microdroid-manager-measurements">Microdroid Manager Measurements</a></h4>
+<p>The <strong>Microdroid Manager</strong>, as part of the system image, performs measurements of the attached APK(s) and APEX packages. These measurements are extended into <strong>Realm Extensible Measurement 1</strong> (REM1) immediately before launching the CC Service. This captures the integrity of the user-provided confidential computing service and its dependencies (additional APEX files).</p>
+<h3 id="cca-attestation-token-structure"><a class="header" href="#cca-attestation-token-structure">CCA Attestation Token Structure</a></h3>
+<p>Once the CC Service is successfully launched, the <strong>Realm token</strong> contains a comprehensive set of measurements that provide evidence of system integrity:</p>
+<ol>
+<li>
+<p><strong>Realm Initial Measurement (RIM)</strong>: Covers measurements of the kernel, initrd image, and device tree blob, providing evidence of the initial boot environment.</p>
+</li>
+<li>
+<p><strong>Realm Extensible Measurement 0 (REM0)</strong>: Contains measurements of the system image, including the Microdroid Manager and other critical system components that are loaded during the early boot process.</p>
+</li>
+<li>
+<p><strong>Realm Extensible Measurement 1 (REM1)</strong>: Encompasses measurements of the attached APK(s) and APEX packages that constitute the Microdroid Payload, ensuring that the confidential computing service and its dependencies are verified.</p>
+</li>
+</ol>
+<p>The <strong>CCA platform token</strong> includes crucial measurement information about the hardware and software/firmware components that constitute the CCA platform (HW, bootloaders, Secure Monitor, Islet RMM firmware, etc.).</p>
+<p>This layered measurement approach ensures that remote parties can verify the integrity of the entire platform and the execution environment, from the initial platform boot, realm kernel boot through the loading of the confidential computing service.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="provisioning-of-confidential-data"><a class="header" href="#provisioning-of-confidential-data">Provisioning of Confidential Data</a></h1>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<p>In the context of <strong>Confidential Computing</strong>, provisioning is a critical process that enables the secure delivery of sensitive assets to isolated <strong>Trusted Execution Environments</strong> (TEE). This mechanism ensures that confidential data, such as machine learning models, cryptographic keys, or proprietary algorithms, can be safely transferred to a secure realm without exposing them to the untrusted host environment.</p>
+<p>The provisioning process is essential for various use cases in confidential computing:</p>
+<ul>
+<li><strong>Confidential Machine Learning Model Deployment</strong>: Securely delivering trained ML models to a confidential realm where they can process sensitive user data without exposing the model intellectual property</li>
+<li><strong>Confidential Data Processing</strong>: Providing sensitive datasets that need to be processed within a secure environment while maintaining their confidentiality</li>
+<li><strong>Cryptographic Key Management</strong>: Safely provisioning encryption keys or other cryptographic material required for secure operations within the confidential environment</li>
+<li><strong>Licensed Software Distribution</strong>: Delivering proprietary software components or libraries to a secure execution context</li>
+</ul>
+<p>The provisioning process leverages <strong>remote attestation</strong> to establish trust between the <strong>provisioning server</strong> and the confidential realm (a confidential VM in Arm CCA architecture) before any sensitive data is transferred. This ensures that assets are only delivered to verified, authorized execution environments, maintaining the confidentiality and integrity guarantees essential to confidential computing.</p>
+<h2 id="description-of-the-provisioning-process"><a class="header" href="#description-of-the-provisioning-process">Description of the Provisioning Process</a></h2>
+<p><img src="assets/provisioning.png" title="large-view" alt="Provisioning flow">
+<em>Figure 1: Provisioning flow</em></p>
+<p>The provisioning process implemented in our solution follows these key steps to securely deliver confidential assets to the execution environment:</p>
+<ol>
+<li>
+<p><strong>Provisioning Request Initiation</strong>: A Java <strong>CC Service</strong> initiates the provisioning process by calling the <code>startProvisioning()</code> method on the <code>com.islet.Cca</code> class. The service provides the URL of the resource to be provisioned and specifies the destination path within the <strong>encrypted store</strong> mount point. The CC Service establishes a connection with the <code>vm_payload_service</code> (a component of Microdroid Manager) through the <a href="https://source.android.com/docs/core/virtualization/microdroid?hl=en#binder-rpc"><strong>Binder RPC</strong></a> interface. The provisioning request is then sent to the <code>vm_payload_service</code>, which launches a dedicated <strong>Provisioning Client</strong> with all necessary parameters, including the URL and destination path.</p>
+</li>
+<li>
+<p><strong>Secure Channel Establishment</strong>: The <strong>Provisioning Client</strong> establishes a secure channel with the <strong>Provisioning Server</strong> using the <strong>RA-TLS</strong> (Remote Attestation Transport Layer Security) protocol. Within the Realm, this step involves the RSI driver and Islet RMM to fetch the attestation token. On the provisioning server side, the <a href="https://github.com/veraison"><strong>Veraison</strong></a> verification service is used to verify the attestation evidence. Once remote attestation is successfully completed, a secure encrypted channel is established between the Provisioning Client and the Provisioning Server.</p>
+</li>
+<li>
+<p><strong>Asset Download and Storage</strong>: The <strong>Provisioning Client</strong> downloads the requested file from the <strong>Provisioning Server</strong> and securely saves it in the <strong>encrypted store</strong>, ensuring that the confidential asset remains protected at rest.</p>
+</li>
+<li>
+<p><strong>Process Completion Notification</strong>: Upon successful completion of the provisioning process, the Java <strong>CC Service</strong> is notified through the Binder RPC interface, indicating the requested asset is now available.</p>
+</li>
+<li>
+<p><strong>Asset Utilization</strong>: The Java <strong>CC Service</strong> can then access and read the provisioned file to perform its intended Confidential Computing operations, such as processing sensitive data with a provisioned machine learning model or utilizing the provisioned cryptographic keys.</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="environment-setup-for-confidential-computing-on-android"><a class="header" href="#environment-setup-for-confidential-computing-on-android">Environment Setup for Confidential Computing on Android</a></h1>
+<h2 id="1-build-aosp-source-and-android-kernels"><a class="header" href="#1-build-aosp-source-and-android-kernels">1. Build AOSP source and Android kernels.</a></h2>
+<pre><code class="language-bash">./scripts/init_android_on_qemu.sh
+</code></pre>
+<p>Source codes are downloaded to the root of this project</p>
+<pre><code class="language-bash">&gt; ls
+android16-6.12-host    README.md          scripts
+android15-6.6-realm    aosp-15.0.0_r8     LICENSE
+</code></pre>
+<h2 id="2-build-cca-firmware"><a class="header" href="#2-build-cca-firmware">2. Build CCA firmware.</a></h2>
+<p>Go to your <a href="https://github.com/islet-project/islet">Islet</a> root, delete the existing firmware if you were working on fvp-cca,
+and build it again using the command below:</p>
+<pre><code class="language-bash">cd ${your-islet-root}
+./scripts/fvp-cca --clean tf-a
+./scripts/fvp-cca --clean tf-rmm
+./scripts/fvp-cca --clean islet
+
+# Note: Set rmm-log-level to warn. Otherwise, rmm gets busy with printing logs out and handling IRQs without making progress.
+./scripts/qemu-cca -nw linux -rmm islet --hes --rmm-log-level warn -bo --no-sdk
+</code></pre>
+<h2 id="3-install-cuttlefish-an-android-virtual-device"><a class="header" href="#3-install-cuttlefish-an-android-virtual-device">3. Install Cuttlefish, an Android Virtual Device.</a></h2>
+<ol>
+<li>Register the apt repository on Artifact Registry.</li>
+</ol>
+<pre><code class="language-bash">sudo curl -fsSL https://us-apt.pkg.dev/doc/repo-signing-key.gpg \
+    -o /etc/apt/trusted.gpg.d/artifact-registry.asc
+sudo chmod a+r /etc/apt/trusted.gpg.d/artifact-registry.asc
+echo "deb https://us-apt.pkg.dev/projects/android-cuttlefish-artifacts android-cuttlefish main" \
+    | sudo tee -a /etc/apt/sources.list.d/artifact-registry.list
+sudo apt update
+</code></pre>
+<ol start="2">
+<li>Download the packages.</li>
+</ol>
+<pre><code class="language-bash">sudo apt install cuttlefish-base
+sudo usermod -aG kvm,cvdnetwork,render $USER
+sudo reboot
+</code></pre>
+<h2 id="4-run-cuttlefish"><a class="header" href="#4-run-cuttlefish">4. Run Cuttlefish.</a></h2>
+<pre><code class="language-bash">cd ${this-branch}
+./scripts/run_cuttlefish.sh ${your-islet-root}
+</code></pre>
+<p>To Access the Android screen, connect to localhost:6444 using a VNC viewer.
+As an alternative, you can use <a href="https://github.com/Genymobile/scrcpy">scrcpy</a>.</p>
+<p>To build scrcpy,</p>
+<pre><code class="language-bash">sudo apt install ffmpeg libsdl2-2.0-0 adb wget \
+                 gcc git pkg-config meson ninja-build libsdl2-dev \
+                 libavcodec-dev libavdevice-dev libavformat-dev libavutil-dev \
+                 libswresample-dev libusb-1.0-0 libusb-1.0-0-dev
+git clone https://github.com/Genymobile/scrcpy
+cd scrcpy
+./install_release.sh
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="apply-android-cc-to-your-service-with-ccplugin"><a class="header" href="#apply-android-cc-to-your-service-with-ccplugin">Apply Android CC to your service with CCPlugin</a></h1>
+<h2 id="what-is-ccplugin"><a class="header" href="#what-is-ccplugin">What is CCPlugIn?</a></h2>
+<p>CCPlugIn allows developers to run their Java services in a Realm environment on Android. It bridges the Normal World and the Realm World, enabling secure and isolated execution of custom services.</p>
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
+<p>Please follow this <a href="https://github.com/islet-project/odcc-islet-script-qemu-rme/blob/main/README.md">Android CC Environment Setup</a> to set up the environment for using Host Android as a VM host and running KVM-based virtual machines.</p>
+<h2 id="how-to-apply-ccplugin-into-your-repository"><a class="header" href="#how-to-apply-ccplugin-into-your-repository">How to apply CCPlugIn into your repository</a></h2>
+<h3 id="generateccservice-on-your-aidl-interface"><a class="header" href="#generateccservice-on-your-aidl-interface"><code>@GenerateCCService</code> on your AIDL interface</a></h3>
+<p>To run an AIDL interface inside a Realm via CCPlugIn, you must annotate the <strong>AIDL interface</strong> with:</p>
+<p><code>@GenerateCCService(FQCN="...")</code></p>
+<p><code>FQCN</code> is the <strong>fully-qualified class name</strong> of the Realm-side service implementation that CCPlugIn should launch and bind to this interface.</p>
+<p>Example:</p>
+<pre><code class="language-java">// This FQCN string should be matched with your own service's FQCN.
+@GenerateCCService(FQCN="com.example.realm.MyCcService")
+interface IExampleInterface
+{
+    void doSomething();
+    int addInt(int a, int b);
+    int getRandomNumber();
+    void getRandomNumberFromCallback(IResponse response);
+    ...
+}
+</code></pre>
+<h3 id="copy-ccplugin_template-into-your-repository"><a class="header" href="#copy-ccplugin_template-into-your-repository">Copy <code>ccplugin_template</code> into your repository</a></h3>
+<pre><code class="language-bash">cd &lt;AOSP ROOT&gt;/external/CCPlugIn
+./copy_ccplugin_template.sh &lt;TARGET REPO ROOT&gt;
+cd &lt;TARGET REPO ROOT&gt;
+cat ccplugin_template/append_to_your_android_bp.txt &gt;&gt; &lt;TARGET ANDROID.BP PATH&gt;/Android.bp
+</code></pre>
+<p>After that, you need to fill in the blanks in your <code>Android.bp</code> file. Here’s an example</p>
+<pre><code>// The main service file of your app which runs in the Realm world. It should be a java file.
+filegroup {
+    name: "my_app_service_for_realm",
+    srcs: [""], // NOTE: Please fill in this part
+}
+
+/*
+ * The actual implementation of this interface runs on "my_app_service_for_realm" in the Realm world.
+ * The CCProxyService uses this interface to relays requests from the Normal World to the Realm world.
+ */
+filegroup {
+    name: "my_app_aidl_for_realm",
+    srcs: [""], // NOTE: Please fill in this part
+}
+</code></pre>
+<p>Please define your own app name and replace “my_app” to it in both your Android.bp
+and ccplugin_template/Android.bp.</p>
+<pre><code>android_app {
+    name: "my_app", // NOTE: Please define your own app name here
+    srcs: [
+        ":generate_cc_service",
+    ],
+    ...
+}
+</code></pre>
+<p>Refer to these sample apps to learn how to apply CCPlugIn to your service:</p>
+<ul>
+<li><a href="https://github.com/islet-project/odcc-example-aosp/tree/on-device-cc">odcc-example-aosp</a></li>
+<li><a href="https://github.com/islet-project/odcc-tf-lite-bert-qa">odcc-tf-lite-bert-qa</a></li>
+</ul>
+<h2 id="building"><a class="header" href="#building">Building</a></h2>
+<pre><code>UNBUNDLED_BUILD_SDKS_FROM_SOURCE=true TARGET_BUILD_APPS=&lt;YOUR ANDROID_APP NAME&gt; m apps_only dist
+</code></pre>
+<h2 id="installing"><a class="header" href="#installing">Installing</a></h2>
+<p>You can install the app like this:</p>
+<pre><code>adb install -t out/dist/&lt;YOUR ANDROID_APP NAME&gt;.apk
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="how-to-use-islet-cca-java-api"><a class="header" href="#how-to-use-islet-cca-java-api">How to use Islet CCA Java API</a></h1>
+<p>The Islet CCA Java API provides a way to access Arm Confidential Compute Architecture (CCA) features from within an Android Islet realm. This API allows you to perform remote attestation, measurement extension, secret derivation, and secure provisioning operations.</p>
+<h2 id="api-overview"><a class="header" href="#api-overview">API Overview</a></h2>
+<p>The main entry point for the Islet CCA functionality is the <code>com.islet.Cca</code> class, which provides static methods for all confidential computing operations. The Javadoc documentation for the Islet CCA Java API can be found <a href="#islet-cca-java-api">here</a>.</p>
+<h2 id="use-case-scenarios"><a class="header" href="#use-case-scenarios">Use Case Scenarios</a></h2>
+<ol>
+<li>
+<p><strong>Remote Attestation</strong>: Generate attestation tokens to prove the integrity and configuration of your realm to external parties.</p>
+</li>
+<li>
+<p><strong>Secure Provisioning</strong>: Download sensitive assets (like machine learning models or cryptographic keys) from a provisioning server after successful attestation verification.</p>
+</li>
+<li>
+<p><strong>Measurement Extension</strong>: Extend Realm Extensible Measurement (REM) slots with custom measurements to track the integrity of runtime-loaded code or data.</p>
+</li>
+<li>
+<p><strong>Secret Derivation</strong>: Generate VM instance-bound secrets for encryption or authentication purposes.</p>
+</li>
+</ol>
+<h2 id="example-use-cases"><a class="header" href="#example-use-cases">Example use cases</a></h2>
+<h3 id="attestation"><a class="header" href="#attestation">Attestation</a></h3>
+<p>Remote attestation is a fundamental security mechanism that allows the Attester (<a href="https://datatracker.ietf.org/doc/html/rfc9334">RATS</a>) to prove its trustworthiness to external parties. The Realm Management Monitor provides two cryptographically signed tokens that contain evidence of the state of the CCA platform and a realm. The CCA platform token contains identity information, platform state (e.g. debug mode), and measurements of the platform firmware. The Realm token contains Realm Initial Measurements (RIM), runtime measurements that have been extended into the REM (Realm Extensible Measurement) slots, and freshness information (nonce). The attestation token serves as verifiable proof that the realm is running in a trusted environment with unmodified code and configuration. For more information about the Arm CCA attestation token content and its format, please refer to the <a href="https://developer.arm.com/documentation/den0137/1-0rel0/?lang=en">Realm Management Monitor specification</a>.</p>
+<p>In case of Arm CCA, the attestation process is based on hardware-rooted security primitives (Hardware Enforced Security module) provided by the Arm CCA architecture. It uses a challenge-response model where an external verifier provides a unique challenge that is incorporated into the attestation token. This prevents replay attacks and ensures that each attestation operation produces a fresh, unique token.</p>
+<p>The example below requests an Arm CCA attestation token. The resulting <code>attestationToken</code> can be passed to the caller which usually sends it back to the external Attestation Verification Service/Relying Party for further processing and security decision:</p>
+<pre><code class="language-java">// Create a challenge (0-64 bytes)
+byte[] challenge = "my-challenge".getBytes();
+
+// Request attestation
+Cca.AttestationResult result = Cca.requestAttestation(challenge);
+
+if (result.isSuccess()) {
+    // Use the attestation token
+    byte[] attestationToken = result.data;
+    // Send to verifier for validation
+} else {
+    // Handle error based on result.status
+    switch (result.status) {
+        case ERROR_INVALID_CHALLENGE:
+            // Challenge size is invalid
+            break;
+        case ERROR_ATTESTATION_FAILED:
+            // Attestation failed
+            break;
+        case ERROR_UNSUPPORTED:
+            // Not supported in current environment
+            break;
+    }
+}
+</code></pre>
+<h3 id="secure-provisioning"><a class="header" href="#secure-provisioning">Secure Provisioning</a></h3>
+<p>Secure provisioning is a critical process that ensures sensitive assets such as machine learning models, cryptographic keys, or other confidential data are downloaded and installed in a trusted environment. This mechanism leverages the remote attestation capabilities of the Islet CCA framework to establish trust between the realm and an external provisioning server.</p>
+<p>The provisioning workflow begins with the realm generating an attestation token that proves its integrity and configuration to the provisioning server. Only after the server successfully verifies this attestation token, it can establish a secure TLS channel with the realm. This ensures that sensitive assets are only delivered to legitimate, uncompromised realms.</p>
+<p>The provisioning mechanism requires access to an external provisioning server. The CC service application package should have incorporated a CA root certificate (<code>assets/certs/server-ca.pem</code>) used to verify authenticity of the provisioning server. In this example the provisioning client will establish a secure TLS channel upon remote attestation procedure and then download <code>model.tflite</code> file from the provisioning server into the <code>/mnt/encryptedstore/models/model.tflite</code> location. Once the provisioning process finishes successfully, the <code>IProvisioningCallback.onSuccess()</code> callback is called to inform the service that the <code>model.tflite</code> file has been successfully downloaded.</p>
+<pre><code class="language-java">// Define provisioning callback
+IProvisioningCallback callback = new IProvisioningCallback.Stub() {
+    @Override
+    public void onError(byte code) {
+        // Handle provisioning error
+        Log.e("Provisioning", "Error: " + code);
+    }
+
+    @Override
+    public void onSuccess(String url, String destination) throws RemoteException {
+        // Asset successfully provisioned
+        Log.i("Provisioning", "Success: " + destination);
+        // Initialize your application with the provisioned asset
+    }
+};
+
+// Start provisioning
+String modelUrl = "https://" + PROVISIONING_SERVER_IP_ADDRESS + "/model.tflite";
+String caCertPath = "certs/server-ca.pem";  // Relative to assets folder
+String destination = "models/model.tflite";  // Relative to encrypted storage
+
+Cca.StartProvisioningStatus status = Cca.startProvisioning(
+    modelUrl,
+    caCertPath,
+    destination,
+    callback
+);
+
+if (status != Cca.StartProvisioningStatus.OK) {
+    // Handle provisioning start error
+}
+</code></pre>
+<h3 id="measurement-extension"><a class="header" href="#measurement-extension">Measurement Extension</a></h3>
+<p>Measurement extension is a crucial security feature that allows realms to track the integrity of runtime-loaded code or data. This mechanism enables the realm to measure dynamically loaded components at runtime, ensuring that the attestation evidence accurately reflects the current state of the realm throughout its execution.</p>
+<p>The REM (Realm Extensible Measurement) slots provide a way to cryptographically record changes to the realm’s state after initialization. Each extension operation uses a hash-extend mechanism that combines the existing measurement with new data, creating a verifiable chain of measurements that can be validated during attestation.</p>
+<p>According to the <a href="https://developer.arm.com/documentation/den0137/1-0rel0/?lang=en">Realm Management Monitor Specification</a>, we have 4 REM (Realm Extensible Measurement) slots available and one RIM (Realm Initial Measurement) slot. The RIM slot is read only during runtime. It reflects the initial state of the realm (the measurement of the memory after loading the Linux kernel, initrd, device tree right before running the kernel). The REM slots can be extended in run-time using a hash-extend operation. This means that you cannot just write a value to these slots, replacing the old content. Instead, the REM content is calculated using a hash function from the old REM content and a value passed to <code>Cca.measurementExtend()</code> method. Note that the initial value of REM content before the Realm is launched is zero. In our solution, we utilize:</p>
+<ul>
+<li>REM0 slot to measure the Microdroid system image,</li>
+<li>REM1 slot to measure the CC Service application and its dependencies (mounted APEX files)</li>
+</ul>
+<p>Thus for the purpose of the CC Service it is recommended to use slots REM2 and REM3.</p>
+<p>The following example shows how to extend REM slots with custom measurements:</p>
+<pre><code class="language-java">// Extend REM2 slot with a custom measurement
+byte[] measurement = hashOfTheData.getBytes();
+Cca.MeasurementExtendStatus status = Cca.measurementExtend(
+    Cca.MeasurementSlotIndex.REM2,
+    measurement
+);
+
+switch (status) {
+    case OK:
+        // Measurement extended successfully
+        break;
+    case ERROR_INVALID_MEASUREMENT:
+        // Measurement size is invalid
+        break;
+    case ERROR_FAILED_TO_EXTEND_ARM_CCA_REM_SLOT:
+        // Failed to extend slot
+        break;
+    case ERROR_UNSUPPORTED:
+        // Not supported in current environment
+        break;
+}
+</code></pre>
+<h3 id="secret-derivation"><a class="header" href="#secret-derivation">Secret Derivation</a></h3>
+<p>Secret derivation is a fundamental cryptographic capability that enables the generation of unique, device-bound secrets within Arm CCA realms. These secrets are cryptographically derived from the hardware-rooted security primitives and are bound to the specific execution environment, making them invaluable for establishing secure communication channels, protecting sensitive data, and implementing device-unique authentication mechanisms.</p>
+<p>A key concept in secret derivation is the “Sealing Key,” which is a specialized form of derived secret used for the “sealing” process. Sealing refers to the encryption of data in a way that binds it to a particular realm and platform configuration. This ensures that sealed data can only be unsealed (decrypted) by the same realm running on the same platform with the same security configuration. The sealing process provides strong protection against data extraction and tampering, as the sealing key is cryptographically tied to the realm’s and the platform’s hardware identity.</p>
+<p>The secret derivation mechanism leverages the hardware-protected key hierarchy established during the realm initialization process. At the root of this hierarchy is the Hardware Unique Key (HUK) stored in the Hardware Enforced Security (HES) module, which ensures that each derived secret is intrinsically tied to the physical device. This binding provides strong anti-cloning properties, preventing secrets from being replicated or transferred to other devices.</p>
+<p>In the Islet implementation, secret derivation serves several critical security functions:</p>
+<ul>
+<li><strong>Data Protection</strong>: Encrypting sensitive application data that should remain confidential and device-bound</li>
+<li><strong>Authentication</strong>: Generating device-unique authentication tokens for secure service access</li>
+<li><strong>Key Wrapping</strong>: Creating wrapping keys for protecting other cryptographic keys in the system</li>
+<li><strong>Integrity Verification</strong>: Deriving keys for HMAC operations to ensure data integrity</li>
+</ul>
+<p>The <code>Cca.getVmInstanceSecret()</code> method implements the secret derivation functionality, producing cryptographically strong secrets that are deterministic for a given identifier within the same VM instance. This means that calling the method with the same identifier will always produce the same secret value, enabling consistent key derivation for applications while maintaining uniqueness across different VM instances and devices.</p>
+<p>This example shows how a CC Service can retrieve VM instance-bound secrets.</p>
+<pre><code class="language-java">// Derive a secret bound to this VM instance
+byte[] identifier = "my-secret-identifier".getBytes();
+int secretSize = 32; // Up to 32 bytes
+
+byte[] secret = Cca.getVmInstanceSecret(identifier, secretSize);
+
+if (secret != null) {
+    // Use the derived secret for encryption or authentication
+    // The same identifier will always produce the same secret
+    // for this specific VM instance
+}
+</code></pre>
+<h3 id="encrypted-storage"><a class="header" href="#encrypted-storage">Encrypted Storage</a></h3>
+<p>This example shows how to retrieve the encrypted storage path. The <a href="https://android.googlesource.com/platform/packages/modules/Virtualization/+/refs/tags/android-15.0.0_r8/guest/encryptedstore/">Encrypted Storage</a> is an AVF’s mechanism that provide encrypted persistent storage for services running in VMs. The encrypted partition which uses a key that is bound to a particular VM instance. The disk image backing that encrypted mountpoint is kept on the Android side in the CC Proxy application data folder and its content survives the VM reboot. A service can freely store files in plain text in that location.</p>
+<p>The below example shows how to retrieve the mountpoint path of an encrypted storage.</p>
+<pre><code class="language-java">// Get path to encrypted storage
+String encryptedStoragePath = Cca.getEncryptedStoragePath();
+if (encryptedStoragePath != null) {
+    // Use for storing sensitive data
+    String modelPath = encryptedStoragePath + "/models/my-model.tflite";
+}
+</code></pre>
+<h3 id="retrieval-of-the-apk-contents-path"><a class="header" href="#retrieval-of-the-apk-contents-path">Retrieval of the APK contents path</a></h3>
+<p>The APK contents path points to the read-only mountpoint of your application’s APK. This path is particularly useful for accessing bundled assets, libraries, or other resources that were packaged with your application during build time.</p>
+<p>When running within an Islet realm, your application has access to its APK contents through a mounted filesystem. This allows you to read configuration files, assets, or native libraries that were included in your APK without needing to extract them to storage first.</p>
+<pre><code class="language-java">// Get path to APK contents
+String apkContentsPath = Cca.getApkContentsPath();
+if (apkContentsPath != null) {
+    // Access read-only APK contents
+    String configPath = apkContentsPath + "/assets/config.json";
+
+    // You can also access other bundled resources
+    String libPath = apkContentsPath + "/lib/arm64-v8a/libmylibrary.so";
+    String rawResourcePath = apkContentsPath + "/res/raw/datafile.txt";
+}
+</code></pre>
+<p><strong>Important considerations:</strong></p>
+<ul>
+<li>The whole APK content is not encrypted, thus it is not intended for storing confidential data in plain text. However, some files can be kept in the APK in encrypted form. Consider scenarios where data is stored in the APK’s assets folder in encrypted form, with the decryption key provisioned from an external server.</li>
+<li>The APK contents are mounted as read-only filesystem</li>
+<li>Any attempt to write to this location will fail</li>
+<li>The path is only valid within the Islet realm context</li>
+<li>Files accessed through this path maintain their original packaging structure</li>
+</ul>
+<p>This mechanism is especially useful for accessing large assets or native libraries without consuming additional storage space in the encrypted storage area.</p>
+<h2 id="complete-example-secure-model-provisioning"><a class="header" href="#complete-example-secure-model-provisioning">Complete Example: Secure Model Provisioning</a></h2>
+<p>Here’s a complete example showing how to provision a machine learning model securely:</p>
+<pre><code class="language-java">public class SecureModelService extends Service {
+    private static final String MODEL_URL = "https://172.33.21.22/model.tflite";
+    private static final String CA_CERT = "certs/server-ca.pem";
+    private static final String MODEL_DEST = "models/model.tflite";
+
+    private String mModelPath;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // Get encrypted storage path
+        String encryptedStorePath = Cca.getEncryptedStoragePath();
+        if (encryptedStorePath != null) {
+            mModelPath = encryptedStorePath + "/" + MODEL_DEST;
+        }
+    }
+
+    // Define provisioning callback
+    IProvisioningCallback callback = new IProvisioningCallback.Stub() {
+        @Override
+        public void onError(byte code) {
+            // Handle provisioning error
+            Log.e("Provisioning", "Error: " + code);
+        }
+
+        @Override
+        public void onSuccess(String url, String destination) throws RemoteException {
+            // Asset successfully provisioned
+            Log.i("Provisioning", "Success: " + destination);
+            // Initialize the Tensorflow Lite engine with the provisioned model ...
+        }
+    };
+
+    private void provisionModel(IProvisioningCallback callback) {
+        // Check if model already exists
+        File modelFile = new File(mModelPath);
+        if (!modelFile.exists()) {
+            // Start provisioning process
+            Cca.StartProvisioningStatus status = Cca.startProvisioning(
+                MODEL_URL,
+                CA_CERT,
+                MODEL_DEST,
+                callback
+            );
+
+            if (status != Cca.StartProvisioningStatus.OK) {
+                // Handle provisioning start error
+                Log.e("Provisioning", "Failed to start provisioning");
+            }
+        } else {
+            // Model already provisioned
+            try {
+                callback.onSuccess(MODEL_URL, MODEL_DEST);
+            } catch (RemoteException e) {
+                Log.e("Provisioning", "Callback error", e);
+            }
+        }
+    }
+
+    // ... rest of service implementation
+}
+</code></pre>
+<h2 id="error-handling"><a class="header" href="#error-handling">Error Handling</a></h2>
+<p>All API methods return status enums that should be checked:</p>
+<ul>
+<li><code>AttestationStatus</code> for attestation operations</li>
+<li><code>MeasurementExtendStatus</code> for measurement extension operations</li>
+<li><code>StartProvisioningStatus</code> for provisioning operations</li>
+</ul>
+<p>Always check the status before using the results of any operation.</p>
+<h2 id="security-considerations"><a class="header" href="#security-considerations">Security Considerations</a></h2>
+<ol>
+<li>
+<p><strong>Attestation Challenges</strong>: Use fresh, unpredictable challenges for each attestation request to prevent replay attacks. Generate cryptographically secure random challenges of sufficient length for each attestation operation. The challenge value should be unique for every request and never reused to ensure the freshness of the attestation evidence. Store challenges securely in memory during the attestation process and clear them immediately after use to prevent unauthorized access. Consider implementing challenge expiration mechanisms to limit the validity window of attestation tokens, adding an additional layer of protection against potential delayed replay attempts.</p>
+</li>
+<li>
+<p><strong>Provisioning Security</strong>: Always verify the server’s identity using CA certificates during provisioning to establish a trusted communication channel. Ensure that the provisioning server’s certificate is signed by a trusted Certificate Authority and that the certificate chain is properly validated. Note that CA certificates can be securely stored within the CC Service application’s assets folder as the application content is reflected in the Realm attestation token. Thus, any tampering with the application can be detected during the remote attestation process.</p>
+</li>
+<li>
+<p><strong>Secret Management</strong>: Derived secrets are bound to the VM instance and persist across reboots but not VM recreation. These secrets provide strong device-binding properties but require careful handling to maintain their security benefits. Never log or store derived secrets in plain text in memory or persistent storage. Clear secret values from memory as soon as they are no longer needed using secure erase functions that prevent compiler optimizations from removing the clearing code. Use secrets only for their intended cryptographic purposes and avoid exposing them through debugging interfaces or crash dumps. Implement proper key derivation practices when using the derived secrets as keying material, including the use of appropriate key derivation functions (KDFs) when deriving multiple keys from a single secret.</p>
+</li>
+<li>
+<p><strong>Measurement Integrity</strong>: REM slots can only be extended, not modified or cleared, so plan your measurement strategy carefully. Each extension operation uses a cryptographically secure hash function to combine the existing measurement with new data, creating an immutable record of the realm’s runtime state. Design your measurement strategy to capture critical security-relevant events such as loading of application code, configuration changes, or access to sensitive resources. Understand that measurements are one-way operations and cannot be undone, so avoid measuring non-deterministic data or data that may change frequently. Implement proper error handling for measurement extension operations and verify the success of each extension before proceeding with dependent operations. Consider the ordering of measurements as it affects the final measurement value, and document your measurement strategy to ensure consistency across different components and versions of your application.</p>
+</li>
+<li>
+<p><strong>Interface Sanitization</strong>: CC Services running in a realm must implement sanitized interfaces that are exposed to Android applications. These interfaces must not expose any confidential data outside the realm boundary, including secret keys and other sensitive information retrieved using the Islet CCA Java API. All data exchanged through these interfaces should be carefully validated and filtered to prevent information leakage. Implement strict input validation on all interface parameters to prevent injection attacks and buffer overflows. Sanitize any output data to remove sensitive information that could inadvertently reveal internal state or implementation details.</p>
+</li>
+<li>
+<p><strong>Secure Coding Practices</strong>: Follow secure coding practices specific to the isolated realm environment, including rigorous input validation, proper error handling, and avoiding unsafe operations that could compromise the realm’s integrity. Implement defense-in-depth strategies and regularly review code for potential vulnerabilities. Use memory-safe programming techniques and avoid unsafe operations that could lead to buffer overflows or memory corruption. Implement proper exception handling to prevent information leakage through error messages. Follow the principle of least privilege when accessing system resources and APIs. Regularly update dependencies and libraries to address known security vulnerabilities. Conduct security-focused code reviews and consider using static analysis tools to identify potential security issues.</p>
+</li>
+<li>
+<p><strong>Resource Management</strong>: Be mindful of the realm’s limited resources compared to the host system. Carefully manage memory usage, CPU consumption, and storage limitations to prevent denial-of-service scenarios within the realm. Implement proper resource cleanup and monitoring to ensure the CC service operates efficiently within the constrained environment. Monitor memory allocation patterns and implement proper garbage collection strategies to prevent memory exhaustion. Use efficient algorithms and data structures to minimize CPU and memory usage. Implement resource quotas and limits to prevent any single operation from consuming excessive resources. Handle resource exhaustion conditions gracefully and implement retry mechanisms with exponential backoff for transient resource issues. Regularly monitor resource usage patterns to identify potential performance bottlenecks or resource leaks.</p>
+</li>
+</ol>
+<h2 id="supported-environments"><a class="header" href="#supported-environments">Supported Environments</a></h2>
+<p>The Islet CCA Java API is only available within Islet realms running on Arm CCA-enabled hardware. When running in environments without CCA support, API methods will return appropriate <code>ERROR_UNSUPPORTED</code> status values.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="how-to-extend-selinux-policy-for-arm-cca-realms-in-aosp-microdroid-and-avf-1"><a href="#how-to-extend-selinux-policy-for-arm-cca-realms-in-aosp-microdroid-and-avf-1" class="header">How to Extend SELinux Policy for Arm CCA Realms in AOSP Microdroid and AVF</a></h1>
+<h2 id="how-to-extend-selinux-policy-for-arm-cca-realms-in-aosp-microdroid-and-avf"><a class="header" href="#how-to-extend-selinux-policy-for-arm-cca-realms-in-aosp-microdroid-and-avf">How to Extend SELinux Policy for Arm CCA Realms in AOSP Microdroid and AVF</a></h2>
+<p>This policy tree has been extended to support the <strong>Arm Confidential Compute Architecture</strong> (CCA) in Microdroid running in a Realm VM using the <strong>Android Virtualization Framework</strong> (AVF). The goal is to enable Microdroid to host Confidential Computing Services (<strong>CC Services</strong>) written in Java or Kotlin using a standard Android API. The Microdroid environment has been extended to provide <strong>CC Services</strong> with Arm CCA remote attestation, provisioning of confidential data over a RA-TLS channel, and sealing key derivation functionality. The changes introduce new domains (<code>kvmtool</code>,
+<code>microdroid_dhcp</code>, <code>avf_prop</code>) and extend existing ones (<code>virtualizationmanager</code>, <code>toolbox</code>,
+<code>microdroid_manager</code>, <code>microdroid_payload</code>, <code>microdroid_app</code>) to cover the full lifecycle:
+VM launch via lkvm, guest networking (DHCP/NTP), access to the Realm Services Interface (RSI) driver, confidential data
+provisioning, and DEX payload execution under the Dalvik VM. The result is a fully enforcing SELinux policy
+for the Microdroid and CC Services running in a Realm.</p>
+<h2 id="selinux-rules--per-domain"><a class="header" href="#selinux-rules--per-domain">SELinux Rules — Per Domain</a></h2>
+<h3 id="domain-kvmtool-new"><a class="header" href="#domain-kvmtool-new">Domain: <code>kvmtool</code> (new)</a></h3>
+<p><strong>Context:</strong> Host Android (Cuttlefish/QEMU). This is the <code>lkvm</code> process spawned by <code>virtualizationmanager</code>.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Resource</th><th>Permissions</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>vm_manager_device_type</code> (<code>/dev/kvm</code>)</td><td><code>rw_file_perms</code></td><td>kvmtool needs <code>/dev/kvm</code> to launch Realm VMs</td></tr>
+<tr><td><code>tun_device</code> (<code>/dev/net/tun</code>)</td><td><code>{ read write ioctl }</code> (no <code>open</code>)</td><td><code>vmnic</code> (root:vpn) creates the TAP interface and passes a ready fd via <code>SCM_RIGHTS</code>. kvmtool cannot open <code>/dev/tun</code> itself: it is <code>crw-rw---- system:vpn</code> and kvmtool runs as app UID (~10115). <code>open</code> is omitted — DAC would block it anyway.</td></tr>
+<tr><td><code>tun_device</code> ioctl</td><td><code>TUNSETIFF TUNGETIFF TUNSETOFFLOAD TUNSETVNETHDRSZ</code></td><td>Required to configure the TAP interface received via fd passing</td></tr>
+<tr><td><code>self:tcp_socket</code></td><td><code>{ create ioctl }</code></td><td>virtio-net code in lkvm creates a dummy socket to query network interface state. Not used for data transfer.</td></tr>
+<tr><td><code>self:tcp_socket</code> ioctl</td><td><code>SIOCGIFFLAGS SIOCGIFADDR</code></td><td>Interface status queries via the dummy socket</td></tr>
+<tr><td><code>anon_inode</code> (<code>kvm-gmem</code>)</td><td><code>write</code></td><td>Guest memory for the VM via KVM — required to start the VM</td></tr>
+<tr><td><code>virtualizationservice_data_file</code>, <code>app_data_file</code>, etc.</td><td><code>read getattr lock</code></td><td>VM disk images, <code>instance.img</code></td></tr>
+<tr><td>fd from <code>virtualizationmanager</code> / <code>untrusted_app</code></td><td><code>use read write</code></td><td>VM console, log pipes</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="domain-virtualizationmanager--extensions"><a class="header" href="#domain-virtualizationmanager--extensions">Domain: <code>virtualizationmanager</code> — extensions</a></h3>
+<p><strong>Context:</strong> Host Android.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Resource / Rule</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>domain_auto_trans(virtualizationmanager, kvmtool_exec, kvmtool)</code></td><td>Forces transition to the <code>kvmtool</code> domain when lkvm is exec’d</td></tr>
+<tr><td><code>capability { dac_override dac_read_search }</code></td><td><code>derive_classpath</code> (enumerates APEX classpath at microdroid start) needs to traverse directories regardless of DAC ownership</td></tr>
+<tr><td><code>self:dir add_name</code>, <code>self:file create</code>, <code>proc:filesystem associate</code></td><td><code>derive_classpath</code> writes output via <code>/proc/self/fd</code></td></tr>
+<tr><td><code>anon_inode write</code></td><td><code>kvm-gmem</code> — required by crosvm (not only kvmtool)</td></tr>
+<tr><td><code>system_data_root_file getattr</code></td><td>Checking the <code>use_kvmtool()</code> flag (<code>/data/use_kvmtool</code> or property)</td></tr>
+<tr><td><code>app_data_file:dir search</code></td><td>Locating microdroid config/disk images in <code>/data/app/...</code></td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="domain-avf_prop-new-property-type"><a class="header" href="#domain-avf_prop-new-property-type">Domain: <code>avf_prop</code> (new property type)</a></h3>
+<p><strong>Context:</strong> Host Android. Affects <code>property_contexts</code>, <code>shell</code>, <code>virtualizationmanager</code>.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Rule</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>system_internal_prop(avf_prop)</code></td><td>Allows <code>shell</code> (adb) to <code>setprop persist.avf.kvmtool</code> and <code>persist.avf.realm</code>. Using <code>system_vendor_config_prop</code> would be wrong — it is blocked by a neverallow: <code>neverallow { domain -init -vendor_init } system_vendor_config_prop:...</code></td></tr>
+<tr><td><code>get_prop(virtualizationmanager, avf_prop)</code></td><td><code>virtmgr</code> reads <code>persist.avf.kvmtool</code> (whether to use lkvm instead of crosvm) and <code>persist.avf.realm</code> (whether to launch a Realm VM)</td></tr>
+<tr><td><code>set_prop(shell, avf_prop)</code></td><td>Allows control via <code>adb shell</code> (testing, feature enabling)</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="domain-microdroid_dhcp-new"><a class="header" href="#domain-microdroid_dhcp-new">Domain: <code>microdroid_dhcp</code> (new)</a></h3>
+<p><strong>Context:</strong> Guest VM (microdroid). DHCP scripts running inside the VM.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Resource</th><th>Permissions</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>netlink_route_socket</code> + <code>capability net_admin</code></td><td>standard</td><td>Configure the network interface after receiving a DHCP lease</td></tr>
+<tr><td><code>shell_exec</code>, <code>system_file</code>, <code>toolbox_exec</code></td><td><code>execute</code></td><td>The DHCP script calls additional tools (<code>ip</code>, <code>ifconfig</code>)</td></tr>
+<tr><td><code>kmsg_device</code></td><td><code>write</code></td><td>Logging to the kernel ring buffer</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="domain-microdroid_manager--extensions"><a class="header" href="#domain-microdroid_manager--extensions">Domain: <code>microdroid_manager</code> — extensions</a></h3>
+<p><strong>Context:</strong> Guest VM.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Resource</th><th>Permissions</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>sysfs:dir/file</code></td><td><code>{ read open getattr }</code></td><td>Reading serial numbers of block devices via <code>/sys/block/vdX/serial</code> (disk identification at VM boot)</td></tr>
+<tr><td><code>sysfs_net:dir</code></td><td><code>{ search read open }</code></td><td>Detecting network interfaces in the VM (checking if network is available)</td></tr>
+<tr><td><code>capability chown</code></td><td>—</td><td>Changing file ownership after writing to encryptedstore (microdroid_manager sets ownership for the payload)</td></tr>
+<tr><td><code>encryptedstore_file</code></td><td><code>{ read open getattr setattr }</code></td><td>microdroid_manager reads files from encrypted storage after download (verification, handoff to payload)</td></tr>
+<tr><td><code>domain_auto_trans(microdroid_manager, system_file/toolbox_exec, toolbox)</code></td><td>—</td><td><code>ip</code>, <code>dhcp</code>, <code>sntp</code> launched by microdroid_manager transition to the <code>toolbox</code> domain (not staying in <code>microdroid_manager</code>). <strong>Note:</strong> in permissive mode they appear as <code>microdroid_manager</code> (<code>execute_no_trans</code> not enforced) — in enforcing mode they MUST transition to <code>toolbox</code>.</td></tr>
+<tr><td><code>udp_socket</code> + ioctl <code>0x8933</code> (<code>SIOCGIFNAME</code>)</td><td><code>create ioctl</code></td><td>microdroid_manager queries network interfaces directly</td></tr>
+<tr><td><code>netlink_route_socket</code> + <code>net_admin</code></td><td>—</td><td>Routing configuration after DHCP (<code>ip route add</code>)</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="domain-toolbox--extensions-for-dhcpntp"><a class="header" href="#domain-toolbox--extensions-for-dhcpntp">Domain: <code>toolbox</code> — extensions for DHCP/NTP</a></h3>
+<p><strong>Context:</strong> Guest VM.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Resource</th><th>Permissions</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>udp_socket</code></td><td><code>create</code></td><td><code>sntp</code> (NTP sync) — sends UDP queries to the time server. <strong>Important:</strong> NTP must complete before attestation (TLS requires correct time).</td></tr>
+<tr><td><code>packet_socket</code> + <code>rawip_socket</code></td><td>—</td><td><code>dhcp</code> — the BOOTP/DISCOVER phase before the VM has an IP address requires a raw Ethernet socket for broadcast</td></tr>
+<tr><td><code>netlink_route_socket</code> + <code>net_admin</code> + <code>net_raw</code></td><td>—</td><td><code>dhcp</code> configures the interface after receiving a lease</td></tr>
+<tr><td><code>capability sys_time</code></td><td>—</td><td><code>sntp</code> sets the system clock after NTP synchronization</td></tr>
+<tr><td><code>sysfs_net</code> + <code>proc_net</code></td><td><code>read</code></td><td>Reading network interface state</td></tr>
+<tr><td><code>udp_socket</code> ioctl</td><td><code>SIOCSIFFLAGS SIOCSIFADDR SIOCSIFBRDADDR SIOCSIFNETMASK</code></td><td><code>ifconfig</code> — setting IP address, netmask, broadcast</td></tr>
+<tr><td><code>rawip_socket</code> ioctl</td><td><code>SIOCGIFHWADDR SIOCADDRT</code></td><td><code>SIOCGIFHWADDR</code> = read MAC address; <code>SIOCADDRT</code> = add route table entry</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="domain-toolbox--extensions-for-ratls_get"><a class="header" href="#domain-toolbox--extensions-for-ratls_get">Domain: <code>toolbox</code> — extensions for <code>ratls_get</code></a></h3>
+<p><strong>Context:</strong> Guest VM.</p>
+<blockquote>
+<p><code>ratls_get</code> is a Rust binary labeled <code>system_file</code>.
+In <strong>permissive</strong> mode it appears as <code>microdroid_manager</code> (<code>execute_no_trans</code> not enforced).
+In <strong>enforcing</strong> mode it transitions to <code>toolbox</code> via <code>domain_auto_trans(microdroid_manager, system_file, toolbox)</code>.</p>
+</blockquote>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Resource</th><th>Permissions</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>self:tcp_socket</code></td><td><code>{ create setopt connect name_connect getopt }</code></td><td><code>ratls_get</code> establishes an HTTPS/RA-TLS connection to the provisioning server using the <code>reqwest</code> Rust library to download confidential file</td></tr>
+<tr><td><code>port:tcp_socket name_connect</code></td><td>TCP port</td><td>The provisioning server listens on a TCP port</td></tr>
+<tr><td><code>rsi_device:chr_file</code></td><td><code>{ read write open ioctl }</code></td><td><code>ratls_get</code> retrieves the Realm Attestation Token via RSI and embeds it in the TLS certificate (RA-TLS). An external Verifier verifies the attestation token to check if the CCA Platform and the Realm content are trustworthy  before issuing the confidential file.</td></tr>
+<tr><td><code>proc_overcommit_memory</code></td><td><code>r_file_perms</code></td><td><code>reqwest</code> reads <code>/proc/sys/vm/overcommit_memory</code> at initialization — standard Rust runtime behavior</td></tr>
+<tr><td><code>encryptedstore_file:dir</code></td><td><code>{ search write add_name }</code></td><td><code>ratls_get</code> creates a provisioned confidential file in the encrypted storage</td></tr>
+<tr><td><code>encryptedstore_file:file</code></td><td><code>{ create write open getattr }</code></td><td>Writing the provisioned confidential file</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="domain-microdroid_payload"><a class="header" href="#domain-microdroid_payload">Domain: <code>microdroid_payload</code></a></h3>
+<p><strong>Context:</strong> Guest VM. Payload process running inside microdroid.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Resource</th><th>Permissions</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>rsi_device:chr_file</code></td><td><code>rw_file_perms</code></td><td>Access to the RSI driver. Microdroid Manager can call: <code>RSI_MEASUREMENT_EXTEND</code>, <code>RSI_ATTESTATION_TOKEN</code>, <code>RSI_MEASUREMENT_READ</code>.</td></tr>
+<tr><td><code>tcp_socket</code> + <code>udp_socket</code></td><td><code>create_socket_perms</code></td><td>BertQA service communicates over the network (e.g. answering queries from the host via vsock/TCP)</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="domain-microdroid_app"><a class="header" href="#domain-microdroid_app">Domain: <code>microdroid_app</code></a></h3>
+<p><strong>Context:</strong> Guest VM. Application code passed in and executed by microdroid_manager.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Resource</th><th>Permissions</th><th>Reason</th></tr>
+</thead>
+<tbody>
+<tr><td><code>default_prop:file</code></td><td><code>{ getattr map }</code></td><td>Android bionic/ART reads basic system properties at initialization (e.g. <code>ro.debuggable</code>)</td></tr>
+<tr><td><code>dalvik_config_prop:file</code></td><td><code>{ read open getattr map }</code></td><td>ART reads JIT/GC configuration: <code>dalvik.vm.heapsize</code>, <code>dalvik.vm.jitinitialsize</code>, etc.</td></tr>
+<tr><td><code>device_config_runtime_native_prop:file</code></td><td><code>{ read open getattr map }</code></td><td><code>device_config</code> feature flags for the ART runtime</td></tr>
+<tr><td><code>apex_info_file:file</code></td><td><code>{ getattr read open map }</code></td><td><code>/apex/apex-info-list.xml</code> — ART needs to know which APEXes are installed (library paths, versions)</td></tr>
+<tr><td><code>unlabeled:dir/file</code></td><td><code>{ search getattr }</code></td><td><code>system_zoneinfo_file</code> in microdroid is labeled <code>unlabeled</code> (label does not map in the simplified microdroid policy). Required for timezone data access by ART.</td></tr>
+<tr><td><code>tmpfs:file</code></td><td><code>{ write map read execute }</code></td><td>JIT cache — ART compiles JIT code to an anonymous file (<code>memfd</code>) which is then mapped executable (<code>W^X</code> relaxed for JIT): <code>memfd_create()</code> + <code>mmap(PROT_EXEC)</code></td></tr>
+<tr><td><code>tmpfs:dir</code></td><td><code>{ search read open getattr }</code></td><td>General tmpfs access (<code>/dev</code>, <code>/tmp</code>) by ART runtime</td></tr>
+<tr><td><code>console_device:chr_file</code></td><td><code>append</code></td><td>Payload stderr goes to the VM console (<code>hvc0</code>)</td></tr>
+<tr><td><code>self:anon_inode</code> (<code>userfaultfd</code>)</td><td><code>{ create ioctl }</code></td><td>ART Garbage Collector uses <code>userfaultfd</code> for concurrent GC (handling page faults in the background without stopping threads)</td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="try-the-demo-apps"><a class="header" href="#try-the-demo-apps">Try the Demo Apps</a></h1>
+<p>Below are demo apps that showcase confidential computing on Android end-to-end. Each demo has its own setup and run instructions—please follow the corresponding guide to build, run, and try it.</p>
+<ul>
+<li><a href="#the-odcc-example-service-and-client-applications">Simple Example</a> — The simplest demo: a Random Number Generator service running inside the Realm to validate the basic integration flow for confidential computing on Android.</li>
+<li><a href="#tensorflow-lite-bert-qa">TensorFlow Lite BERT QA</a> — BERT-based question answering on TensorFlow Lite, wired to run inside the Realm and return answers to the client.</li>
+<li><a href="#ai-model-provisioining">AI Model Provisioning</a> — It is the odcc-tf-lite-bert-qa application adjusted to use the <a href="#provisioning-of-confidential-data">Remote Provisioning</a> mechanism. The TensorFlow Lite model is not put inside the assets folder, instead it is provisioned from an external provisioning server using RA-TLS (Remote Attestation combined with TLS) secure channel.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="the-odcc-example-service-and-client-applications"><a class="header" href="#the-odcc-example-service-and-client-applications">The ODCC example service and client applications</a></h1>
+<p>This repository contains a simple example that provides a client application and an android bound service running inside a Realm.
+To run a service in a Realm, it uses the <a href="https://github.com/islet-project/odcc-ccplugin/blob/main/README.md">CCPlugIn</a>.</p>
+<h2 id="cloning"><a class="header" href="#cloning">Cloning</a></h2>
+<p>Note, that the repository should be cloned once you download the whole distribution.</p>
+<pre><code>cd $ANDROID_BUILD_TOP
+mkdir -p vendor/samsung
+cd vendor/samsung
+git clone https://github.com/islet-project/odcc-example-aosp.git -b on-device-cc
+</code></pre>
+<h2 id="the-odccexampleserviceoriggen-folder"><a class="header" href="#the-odccexampleserviceoriggen-folder">The <code>OdccExampleServiceOrig/gen/</code> folder</a></h2>
+<p><code>OdccExampleServiceOrig/gen/</code> holds a <strong>checked-in reference copy</strong> of Java and metadata that <strong><code>aidl</code></strong> generates from <code>IExampleInterface.aidl</code> (invoked from <code>OdccExampleServiceOrig/ccplugin_template/Android.bp</code>), so you can read the auto-generated proxy, manifest fragment, and realm target hint without a full tree build. For what each path is and how to refresh the snapshot from Soong or <code>aidl</code>, see <strong><a href="demo/OdccExampleServiceOrig/gen/README.html">OdccExampleServiceOrig/gen/README.md</a></strong>.</p>
+<h2 id="building-1"><a class="header" href="#building-1">Building</a></h2>
+<p>To build the client and service applications execute the following commands.</p>
+<p>For the client app:</p>
+<pre><code>m OdccExampleClientOrig
+</code></pre>
+<p>For the CC-enabled service app:</p>
+<pre><code>m OdccExampleServiceOrig
+</code></pre>
+<p>The resulting APK files are located in out/target/product/vsoc_arm64_only/system/app folder.</p>
+<pre><code>OdccExampleClientOrig/OdccExampleClientOrig.apk
+OdccExampleServiceOrig/OdccExampleServiceOrig.apk
+</code></pre>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>You can install them at once by simply running:</p>
+<pre><code>cd &lt;AOSP Root&gt;/out/target/product/vsoc_arm64_only/system/app/
+adb install-multi-package OdccExampleClientOrig/OdccExampleClientOrig.apk OdccExampleServiceOrig/OdccExampleServiceOrig.apk
+</code></pre>
+<h2 id="running"><a class="header" href="#running">Running</a></h2>
+<h3 id="run-the-cc-enabled-service-app-using-crosvm"><a class="header" href="#run-the-cc-enabled-service-app-using-crosvm">Run the CC-enabled service app using crosvm</a></h3>
+<pre><code class="language-bash">adb root
+adb shell
+setenforce 0
+
+# Run the client and the service apps.
+# The client calls 'bindService' to the CCPlugIn with BIND_AUTO_CREATE flag. So CCPlugIn will be launched automatically.
+# NOTE: But it takes some time to run the VM. Don't touch any buttons in client UI.
+am start -n com.examplecc.client/.MainActivity
+
+# Check the log "Target service binder successfully obtained and converted"
+# If you can see the log, then the VM is running.
+tail -f /data/data/com.examplecc.service/files/service2.txt
+</code></pre>
+<p>Then press any button and see the result.</p>
+<h3 id="run-it-using-kvmtool"><a class="header" href="#run-it-using-kvmtool">Run it using kvmtool</a></h3>
+<p>To run it using kvmtool, follow this commands:</p>
+<pre><code class="language-bash">adb root
+adb shell
+setenforce 0
+
+# Create files which are some kinds of flags to use kvmtool
+touch /data/use_kvmtool /data/use_realm
+
+# Run the client app.
+am start -n com.examplecc.client/.MainActivity
+
+# Check the log "Target service binder successfully obtained and converted"
+# If you can see the log, then the realm is running.
+tail -f /data/data/com.examplecc.service/files/service2.txt
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="tensorflow-lite-bert-qa"><a class="header" href="#tensorflow-lite-bert-qa">TensorFlow Lite BERT QA</a></h1>
+<p>This repository contains the code based on <a href="https://github.com/tensorflow/examples/tree/master/lite/examples/bert_qa/android">https://github.com/tensorflow/examples/tree/master/lite/examples/bert_qa/android</a> that has been adapted to the AOSP build system and provides a separate bound service implementing the main TF Lite BERT QA functionality.</p>
+<h2 id="source-code"><a class="header" href="#source-code">Source code</a></h2>
+<p>The source code of the application should be automatically downloaded into <code>external/odcc-tf-lite-bert-qa</code> once the AOSP supporting CC services is downloaded.</p>
+<h2 id="the-gen-folder"><a class="header" href="#the-gen-folder">The <code>gen/</code> folder</a></h2>
+<p><code>gen/</code> holds a <strong>checked-in reference copy</strong> of Java and metadata that <strong><code>aidl</code></strong> generates from <code>IBertQaInterface.aidl</code> (invoked from <code>ccplugin_template/Android.bp</code>), so you can read the auto-generated proxy, manifest fragment, and realm target hint without a full tree build. For layout, cross-links to other example repos, what each path contains, and how to refresh the snapshot from Soong or <code>aidl</code>, see <strong><a href="demo/gen/README.html">gen/README.md</a></strong>.</p>
+<h2 id="building-2"><a class="header" href="#building-2">Building</a></h2>
+<p>To build the client and service applications, execute the following command.</p>
+<pre><code>UNBUNDLED_BUILD_SDKS_FROM_SOURCE=true TARGET_BUILD_APPS="TfLiteBertQADemo TfLiteBertQADemoService" m apps_only dist
+</code></pre>
+<p>The resulting APK files are located in out/dist folder.</p>
+<pre><code>out/dist/TfLiteBertQADemo.apk
+out/dist/TfLiteBertQADemoService.apk
+</code></pre>
+<h2 id="installation-1"><a class="header" href="#installation-1">Installation</a></h2>
+<p>You can install them at once by simply running:</p>
+<pre><code>adb install-multi-package out/dist/TfLiteBertQADemo.apk out/dist/TfLiteBertQADemoService.apk
+</code></pre>
+<h2 id="running-1"><a class="header" href="#running-1">Running</a></h2>
+<p>Launch the Cuttlefish emulator, then:</p>
+<pre><code>adb root
+adb shell
+</code></pre>
+<p>This allows you to run the CC service inside a standard VM (crosvm VMM is used to launch the service).
+To run the CC service in a Realm VM, type the following commands:</p>
+<pre><code>setprop persist.avf.kvmtool true
+setprop persist.avf.realm true
+</code></pre>
+<p>After installation of both apps (client and service), launch the TfLiteBertQaDemo client app and select the article. Depending on the used platform and VMM, it may take from several seconds to a couple of minutes to load the Tensorflow Lite model. Then select a question from the list and click the right arrow button at the bottom.</p>
+<p>Observe the logs:</p>
+<pre><code>tail -f /data/data/org.tensorflow.lite.examples.bertqaservice/files/microdroid.txt
+tail -f /data/data/org.tensorflow.lite.examples.bertqaservice/files/console.txt
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ai-model-provisioining"><a class="header" href="#ai-model-provisioining">AI Model Provisioining</a></h1>
+<p>This repository contains the code of the TensorFlow Lite BERT QA application
+<a href="https://github.com/tensorflow/examples/tree/master/lite/examples/bert_qa/android">https://github.com/tensorflow/examples/tree/master/lite/examples/bert_qa/android</a>
+that has been adapted to the AOSP build system and provides a separate bound
+service implementing the main TF Lite BERT QA functionality.</p>
+<p>The service uses a provisioning mechanism to provision the TensorFlow Bert QA
+model from an external provisioning server.</p>
+<h2 id="source-code-1"><a class="header" href="#source-code-1">Source code</a></h2>
+<p>The source code of the application should be automatically downloaded into
+<code>external/odcc-tf-lite-bert-qa-provisioning</code> once the AOSP supporting CC
+services is downloaded using the steps below.</p>
+<h1 id="running-the-application-with-the-android-odcc-stack"><a class="header" href="#running-the-application-with-the-android-odcc-stack">Running the application with the Android ODCC stack</a></h1>
+<h2 id="android-odcc"><a class="header" href="#android-odcc">Android ODCC</a></h2>
+<p>We first need to checkout and setup the Android On Device Confidential Computing
+stack. The repository and steps we need to follow are here:
+<a href="https://github.com/islet-project/odcc-islet-script-qemu-rme">https://github.com/islet-project/odcc-islet-script-qemu-rme</a>.</p>
+<p>Please checkout that repository and follow the steps in its README. Before
+continuing here please make sure it runs successfully and you can connect to the
+the Android both through <code>adb shell</code> and graphically (e.g. with VNC).</p>
+<h2 id="environment-setup"><a class="header" href="#environment-setup">Environment setup</a></h2>
+<p>You should have checked out two repositories, the repository above and
+<a href="https://github.com/islet-project/islet">Islet</a> as instructed. Those two
+directories will be referenced throughout this README as <code>$ANDROID</code> and <code>$ISLET</code>
+respectively.</p>
+<p>We will need one more repository, so check it out now:
+https://github.com/islet-project/ratls. We’ll be referencing this repository as
+<code>$RATLS</code>.</p>
+<p>Also please make sure to setup the android development environment. Basically,
+in every shell that will run commands presented here please make sure to execute
+the following:</p>
+<pre><code>export ANDROID="/path/to/odcc-islet-script-qemu-rme"
+export ISLET="/path/to/islet-project/islet"
+export RATLS="/path/to/islet-project/ratls"
+
+cd "$ANDROID"/aosp-15.0.0_r8
+source build/envsetup.sh
+lunch aosp_cf_arm64_only_phone-trunk_staging-userdebug
+</code></pre>
+<p>The easiest way would be to write this (with correct paths) to some temporary
+file and source this file in every new terminal. With that all the commands
+presented in this README (bar one) can be copy &amp; pasted verbatim.</p>
+<p>The successful output of Android development environment setup should look like
+this:</p>
+<pre><code>============================================
+PLATFORM_VERSION_CODENAME=VanillaIceCream
+PLATFORM_VERSION=VanillaIceCream
+TARGET_PRODUCT=aosp_cf_arm64_only_phone
+TARGET_BUILD_VARIANT=userdebug
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=cortex-a53
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-6.8.0-106-generic-x86_64-Ubuntu-24.04.4-LTS
+HOST_CROSS_OS=linux_musl
+BUILD_ID=AP4A.241205.013.B1
+OUT_DIR=out
+============================================
+</code></pre>
+<h2 id="building-the-bertqa-application"><a class="header" href="#building-the-bertqa-application">Building the BertQa application</a></h2>
+<p>Now build the client and service applications:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+UNBUNDLED_BUILD_SDKS_FROM_SOURCE=true TARGET_BUILD_APPS="TfLiteBertQADemoProvisioning TfLiteBertQADemoServiceProvisioning" m apps_only dist
+</code></pre>
+<p>The resulting APK files are located in out/dist folder.</p>
+<ol>
+<li><code>out/dist/TfLiteBertQADemoProvisioning.apk</code></li>
+<li><code>out/dist/TfLiteBertQADemoServiceProvisioning.apk</code></li>
+</ol>
+<h2 id="gathering-measurements"><a class="header" href="#gathering-measurements">Gathering measurements</a></h2>
+<p>For provisioning to work we need attestation. And for attestation to work we
+need reference measurements that are going to be provisioned to the attestation
+verification services.</p>
+<p>Measurements consist of platform measurements (bootloaders, TF-A, Islet RMM,
+etc.) and realm measurements (realm, microdroid, application).</p>
+<h3 id="platform-reference-measurements"><a class="header" href="#platform-reference-measurements">Platform reference measurements</a></h3>
+<p>Platform measurements are in form of a CCA attestation token. To obtain the
+attestation token we need to run the android, then microdroid and execute a
+command on the microdroid environment.</p>
+<p><em>Terminal 1</em>:</p>
+<pre><code>cd "$ANDROID"
+./scripts/run_cuttlefish.sh "$ISLET"
+</code></pre>
+<p><em>Terminal 2</em>:</p>
+<pre><code>adb -s 0.0.0.0:6520 wait-for-device
+adb -s 0.0.0.0:6520 root
+adb -s 0.0.0.0:6520 shell setprop persist.avf.kvmtool true
+adb -s 0.0.0.0:6520 shell setprop persist.avf.realm true
+</code></pre>
+<p>After the above commands executed successfully wait a minute and run the
+microdroid, <em>Terminal 2</em>:</p>
+<pre><code>adb -s 0.0.0.0:6520 shell /apex/com.android.virt/bin/vm run-microdroid
+</code></pre>
+<p>After the microdroid has been booted (new logs on <em>Terminal 2</em> stop appearing)
+connect to microdroid and get the token.</p>
+<p><em>Terminal 3</em>:</p>
+<pre><code>vm_shell connect
+</code></pre>
+<p><em>Terminal 3</em> inside microdroid:</p>
+<pre><code>rsictl attest -o /data/token.bin
+exit
+</code></pre>
+<p>Download the token and stop the emulator, <em>Terminal 3</em>:</p>
+<pre><code>cd $ANDROID
+adb -s localhost:8000 pull /data/token.bin .
+stop_cvd
+</code></pre>
+<h3 id="realm-reference-measurements"><a class="header" href="#realm-reference-measurements">Realm reference measurements</a></h3>
+<p>Realm measurements are in a form of RIM (Realm Initial Measurement) and REMs
+(Realm Extensible Measurements) values. We provide tools for measuring those
+values.</p>
+<p>First build the tools:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+m realm_metadata_tool
+m microdroid_calculate_rem
+m ccservice_calculate_rem
+</code></pre>
+<p>Obtain <code>RIM</code>:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+realm_metadata_tool dump -i out/target/product/vsoc_arm64_only/apex/com.android.virt/etc/fs/microdroid_realm_metadata.bin | grep "^rim:"
+</code></pre>
+<p>Obtain <code>REM0</code>:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+microdroid_calculate_rem   --vbmeta-system-image out/target/product/vsoc_arm64_only/apex/com.android.virt/etc/fs/microdroid_vbmeta.img | grep "^REM0:"
+</code></pre>
+<p>Obtain <code>REM1</code>:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+ccservice_calculate_rem --main-apk out/dist/TfLiteBertQADemoServiceProvisioning.apk  \
+                        --apex-root-path ./out/soong/.intermediates/   \
+                        --extra-apk-root-path out/target/product/vsoc_arm64_only/system/ \
+                        --config-file-name vm_config.json
+</code></pre>
+<p>Please write down the 3 obtained values (<code>RIM</code>, <code>REM0</code>, <code>REM1</code>). We will need
+them in the next step.</p>
+<h2 id="provisioning-server"><a class="header" href="#provisioning-server">Provisioning server</a></h2>
+<p>We need to setup a server that will provision the model to the
+application/service over the network. This server resides with <code>ratls</code>
+repository we’ve checked out earlier. For it to work fully we need to setup
+everything with the measurements we’ve obtained earlier.</p>
+<h3 id="realm-reference-measurements-1"><a class="header" href="#realm-reference-measurements-1">Realm reference measurements</a></h3>
+<p>Realm measurements are handled directly by the provisioning server. Using the
+obtained RIM/REMs values set them as follows (<strong>this command needs to be amended,
+cannot be pasted as is</strong>):</p>
+<pre><code>export RIM="HEX_RIM_VALUE"
+export REM0="HEX_REM0_VALUE"
+export REM1="HEX_REM1_VALUE"
+</code></pre>
+<p>Now generate the file with reference realm measurements for use with the
+provisioning server:</p>
+<pre><code>cd "$RATLS"/tools/ratls-serve/ratls
+cat &gt; odcc.json &lt;&lt; EOF
+{
+    "version": "0.1",
+    "issuer": {
+        "name": "Samsung",
+        "url": "https://cca-realms.samsung.com/"
+    },
+    "realm": {
+        "uuid": "f7e3e8ef-e0cc-4098-98f8-3a12436da040",
+        "name": "Data Processing Service",
+        "version": "1.0.0",
+        "release-timestamp": "2026-03-24T09:00:00Z",
+        "attestation-protocol": "HTTPS/RA-TLSv1.0",
+        "port": 8088,
+        "reference-values": {
+            "rim": "$RIM",
+            "rems": [
+                [
+                    "$REM0",
+                    "$REM1",
+                    "0000000000000000000000000000000000000000000000000000000000000000",
+                    "0000000000000000000000000000000000000000000000000000000000000000"
+                ]
+            ],
+            "hash-algo": "sha-256"
+        }
+    }
+}
+EOF
+</code></pre>
+<h3 id="platform-reference-measurements-1"><a class="header" href="#platform-reference-measurements-1">Platform reference measurements</a></h3>
+<p>This requires Veraison services running and configured. This in turn requires to
+have <code>docker</code> and <code>go</code> installed and working.</p>
+<p>This step can be omitted in case of issues. We will have to disable Veraison
+usage in such case when running the provisioning server.</p>
+<p>Build and run the Veraison service. This process is mostly automated using the
+following script:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning/veraison
+./bootstrap.sh
+</code></pre>
+<p>We can check whether the Veraison has been run successfully with:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning/veraison
+source services/deployments/docker/env.bash
+veraison status
+</code></pre>
+<p>The command should output something like:</p>
+<pre><code>         vts: running
+provisioning: running
+verification: running
+  management: running
+    keycloak: running
+</code></pre>
+<p>We also need a public CPAK key that is used to verify the platform token. The
+token is generated and signed with the usage of private CPAK key by the HES
+service run in the background with the Android ODCC stack automatically.</p>
+<p>To obtain the CPAK public key:</p>
+<pre><code>cd "$ISLET"/hes/cpak-generator
+cargo run
+</code></pre>
+<p>We also need to build one tool used by scripts below:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning
+make bin/rocli
+</code></pre>
+<p>Now provision the already running Veraison with platform reference measurements
+and the public part of CPAK key:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning/veraison/provision
+./run.sh -t "$ANDROID"/token.bin -c "$ISLET"/hes/out/cpak_public.pem
+</code></pre>
+<p>We can see the the platform reference measurements and the public part of CPAK
+key inside Veraison with:</p>
+<pre><code>cd "$ISLET"/examples/app-provisioning/veraison
+source services/deployments/docker/env.bash
+veraison stores
+</code></pre>
+<h2 id="running-the-whole-stack"><a class="header" href="#running-the-whole-stack">Running the whole stack</a></h2>
+<h3 id="running-the-android-odcc-and-services"><a class="header" href="#running-the-android-odcc-and-services">Running the Android ODCC and services</a></h3>
+<p>First run the provisioning server. The model being provisioned is already
+included in the repository (<code>$RATLS/tools/ratls-serve/root/demo-model.tflite</code>).</p>
+<p><em>Terminal 1</em>:</p>
+<p>If we have Veraison service running and configured:</p>
+<pre><code>cd "$RATLS"/tools/ratls-serve
+cargo run -- -j ratls/odcc.json
+</code></pre>
+<p>If Veraison is not running:</p>
+<pre><code>cd "$RATLS"/tools/ratls-serve
+cargo run --features disable-veraison -- -j ratls/odcc.json
+</code></pre>
+<p>Run the Android with ODCC, <em>Terminal 2</em>:</p>
+<pre><code>cd "$ANDROID"
+./scripts/run_cuttlefish.sh "$ISLET"
+</code></pre>
+<p><em>Terminal 3</em>:</p>
+<pre><code>adb -s 0.0.0.0:6520 wait-for-device
+adb -s 0.0.0.0:6520 root
+adb -s 0.0.0.0:6520 shell setprop persist.avf.kvmtool true
+adb -s 0.0.0.0:6520 shell setprop persist.avf.realm true
+</code></pre>
+<p>Connect to the Android graphically and wait for it to boot completely, until the
+lock screen is visible.</p>
+<h3 id="running-the-bertqa-application"><a class="header" href="#running-the-bertqa-application">Running the BertQA application</a></h3>
+<p>When Android is up and running install the application we built previously:</p>
+<pre><code>cd "$ANDROID"/aosp-15.0.0_r8
+adb -s 0.0.0.0:6520 install-multi-package out/dist/TfLiteBertQADemoProvisioning.apk out/dist/TfLiteBertQADemoServiceProvisioning.apk
+</code></pre>
+<p>Unlock the screen, open the application launcher and run the first (the one on
+the left) <code>TFLite Bert Qa Demo</code> app. Alternatively you can do that from command
+line:</p>
+<pre><code>adb -s 0.0.0.0:6520 shell input keyevent KEYCODE_MENU
+adb -s 0.0.0.0:6520 shell am start org.tensorflow.lite.examples.bertqa/.MainActivity
+</code></pre>
+<p>Select an article. After you see the spinner you can observe the microdroid logs
+with:</p>
+<pre><code>adb -s 0.0.0.0:6520 shell tail -f /data/data/org.tensorflow.lite.examples.bertqaservice/files/console.txt
+</code></pre>
+<p>Wait a couple of minutes. You should see the microdroid VM booting in the
+logs. First the kernel, then the microdroid manager, application CC service and
+then the provisioning client that will download the model.</p>
+<p>You can see the provisioning process in the logs with lines similar to:</p>
+<pre><code>BertQaService: The model is being initialized
+BertQaService: Starting provisionOrInitModelFromFile()
+BertQaService: The TFLite Bert QA model doesn't exist in encryptedstore - start provisioning...
+54   130 I microdroid_manager: microdroid_manager::vm_payload_service: startProvisioning has been called https://192.168.97.1:1337/demo-model.tflite ca-cert.pem demo-model.tflite
+[INFO  ratls_get] Cli {
+        root_ca: "/mnt/apk/assets/ca-cert.pem",
+        url: "https://192.168.97.1:1337/demo-model.tflite",
+        output: "/mnt/encryptedstore/demo-model.tflite",
+        tls: RaTLS,
+        token: None,
+        cont: false,
+        retry: 3,
+    }
+[INFO  ratls::cert_resolver] Generating RSA 2048bit key.
+[INFO  ratls::cert_resolver] Finished generating RSA key.
+[INFO  ratls_get] Saving as: "/mnt/encryptedstore/demo-model.tflite"
+[INFO  ratls_get] Downloaded 100670436 bytes
+54   136 I microdroid_manager: microdroid_manager::vm_payload_service: Provisioning of https://192.168.97.1:1337/demo-model.tflite to demo-model.tflite succeded
+BertQaService: Provisioning of the TFLite Bert QA model has succeeded URL: https://192.168.97.1:1337/demo-model.tflite destination: demo-model.tflite
+BertQaService: Setup of TFLite Bert QA model
+BertQaService: The TFLite Bert QA model has been successfully initialized
+</code></pre>
+<p>The provisioning server on <em>Terminal 1</em> will also show the logs of a network
+connection, verification process and serving the model file.</p>
+<p>Of importance are lines like those:</p>
+<pre><code>[INFO  ratls::cert_verifier] Received client CCA token:
+[DEBUG reqwest::connect] starting new connection: https://localhost:8080/
+[INFO  veraison_verifier::verifier] Submod CCA_SSD_PLATFORM affirms token
+[INFO  veraison_verifier::verifier] Verification passed successfully
+[DEBUG realm_verifier] RIM match
+[DEBUG realm_verifier] REMs match
+[DEBUG realm_verifier] Hash algorithm match
+[DEBUG tower_http::trace::make_span] request; method=GET uri=/demo-model.tflite version=HTTP/1.1
+[DEBUG tower_http::trace::on_request] started processing request
+[INFO  ratls_serve::httpd] Handling payload request: demo-model.tflite
+[DEBUG tower_http::trace::on_response] finished processing request latency=0 ms status=200
+
+</code></pre>
+<p>Now, going back to the application UI, the spinner should disappear and we can
+select or write a question under the article and click the blue arrow at the
+bottom. Note that the inference process may also take several minutes.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="implementation"><a class="header" href="#implementation">Implementation</a></h1>
+<p>This section describes the details of CCPlugin components and their implementation within the Android confidential computing framework.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ccplugin-libraries"><a class="header" href="#ccplugin-libraries">CCPlugin Libraries</a></h1>
+<p>This document describes each library in the CCPlugIn project. CCPlugIn enables running Java services in an Arm CCA Realm environment on Android, bridging the Normal World (host Android) and the Realm World.</p>
+<h2 id="library-overview"><a class="header" href="#library-overview">Library Overview</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Library</th><th>Language</th><th>Runs In</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td>libccplugin_islet_realm</td><td>Java</td><td>Realm VM</td><td>Arm CCA API for confidential services</td></tr>
+<tr><td>libccplugin_islet_android</td><td>Java</td><td>Host Android</td><td>a dummy/stub implementation of the Cca Java library for Android development</td></tr>
+<tr><td>libccplugin_android_mockups</td><td>Java</td><td>Realm VM</td><td>Minimal Android framework APIs for Realm World</td></tr>
+<tr><td>libccplugin_native</td><td>C++</td><td>Realm VM</td><td>Native payload: JVM launcher and Binder bridge</td></tr>
+<tr><td>libccplugin_jni</td><td>C/C++</td><td>Realm VM</td><td>JNI bindings for Binder, Parcel, etc.</td></tr>
+<tr><td>libccplugin_vm</td><td>Java</td><td>Host Android</td><td>Virtual machine lifecycle management</td></tr>
+<tr><td>libccplugin_log</td><td>Java</td><td>Host Android, Realm VM</td><td>Utilities for VM related logging</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="when-each-library-is-required"><a class="header" href="#when-each-library-is-required">When Each Library Is Required</a></h3>
+<p><strong>Always required</strong> when applying CCPlugIn to your app to run your service in Realm:</p>
+<ul>
+<li><code>libccplugin_vm</code>, <code>libccplugin_log</code>, <code>libccplugin_native</code>, <code>libccplugin_android_mockups</code> — Host app and Realm payload cannot run without these.</li>
+<li><code>libccplugin_jni</code> — Statically linked into <code>libccplugin_native</code>; not declared directly by the app.</li>
+<li><code>libccplugin_islet_realm</code> — Bundled with <code>libccplugin_android_mockups</code>. Required for Realm VM.</li>
+</ul>
+<p><strong>Optional:</strong></p>
+<ul>
+<li><code>libccplugin_islet_android</code> — a dummy/stub implementation of the Cca Java library for Android development, which will be replaced by the proper Islet functionality (libccplugin_islet_realm) when ported to CC.</li>
+</ul>
+<p>For how to apply CCPlugIn to your repository, please see <a href="README.html#how-to-apply-ccplugin-into-your-repository">How to apply CCPlugIn into your repository</a> section.</p>
+<h3 id="java-api-support-for-cc-services"><a class="header" href="#java-api-support-for-cc-services">Java API support for CC services</a></h3>
+<p>A CC service developer can utilize a standard Java API available in Android 15, which is aligned with OpenJDK 17. This includes core packages such as:</p>
+<ul>
+<li><code>java.lang</code> - Core Java classes including Object, String, Thread, Runnable, and more</li>
+<li><code>java.util</code> - Collections framework, including List, Map, Set, and utility classes</li>
+<li><code>java.io</code> - Basic I/O operations for file and stream handling</li>
+<li><code>java.net</code> - Network operations and URL handling</li>
+<li><code>java.time</code> - Date and time API (JSR-310)</li>
+<li><code>java.math</code> - Mathematical operations including BigDecimal and BigInteger</li>
+<li><code>java.nio</code> - Buffer operations and NIO utilities</li>
+<li><code>java.text</code> - Text processing and formatting</li>
+<li><code>java.security</code> - Security-related classes including MessageDigest and SecureRandom</li>
+<li><code>java.util.concurrent</code> - Concurrency utilities and thread management</li>
+<li><code>java.util.function</code> - Functional interfaces for lambda expressions</li>
+<li><code>java.util.regex</code> - Regular expression support</li>
+<li><code>java.util.stream</code> - Stream API for functional-style operations on collections</li>
+<li><code>javax.crypto</code> - Cryptographic operations</li>
+<li><code>javax.net.ssl</code> - SSL/TLS support</li>
+</ul>
+<p>Note that this is not a complete implementation of the OpenJDK 17 API but a subset that is commonly used in Android services.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="islet-cca-java-api-libccplugin_islet_realm"><a class="header" href="#islet-cca-java-api-libccplugin_islet_realm">Islet CCA Java API (libccplugin_islet_realm)</a></h1>
+<h2 id="overview-2"><a class="header" href="#overview-2">Overview</a></h2>
+<p>This library provides Java bindings for Arm Confidential Compute Architecture (CCA) functionality within the CCPlugIn framework. It enables confidential computing services running in Islet realms to access security-sensitive operations such as remote attestation, measurement extension, secure storage, and remote provisioning.</p>
+<p>The library serves as a bridge between Java-based confidential services and the native Islet CCA implementation, allowing developers to leverage Arm CCA features while writing services in Java.</p>
+<h2 id="purpose"><a class="header" href="#purpose">Purpose</a></h2>
+<p>The primary purpose of this library is to expose Arm CCA functionality to Java services running in confidential Realm VMs as part of the CCPlugIn framework. This allows services to:</p>
+<ul>
+<li>Request attestation tokens carrying attestation evidence</li>
+<li>Extend realm measurements reflected in attestation evidence</li>
+<li>Access instance-bound secrets for encryption</li>
+<li>Utilize encrypted persistent storage</li>
+<li>Perform secure remote provisioning of resources</li>
+</ul>
+<h2 id="key-features"><a class="header" href="#key-features">Key Features</a></h2>
+<h3 id="1-remote-attestation"><a class="header" href="#1-remote-attestation">1. Remote Attestation</a></h3>
+<ul>
+<li>Request Arm CCA remote attestation tokens</li>
+<li>Include freshness challenges in attestation evidence</li>
+<li>Verify Realm integrity and configuration</li>
+</ul>
+<h3 id="2-measurement-extension"><a class="header" href="#2-measurement-extension">2. Measurement Extension</a></h3>
+<ul>
+<li>Extend Realm Extensible Measurement (REM) slots</li>
+<li>Incorporate custom measurements into attestation evidence</li>
+<li>Support for multiple measurement slots (REM0-REM3)</li>
+</ul>
+<h3 id="3-realm-vm-instance-secrets"><a class="header" href="#3-realm-vm-instance-secrets">3. Realm VM Instance Secrets</a></h3>
+<ul>
+<li>Derive encryption keys bound to unique Realm VM instances and a unique Realm Sealing Key</li>
+<li>Generate up to 32-byte secrets for cryptographic operations</li>
+<li>Support for multiple secrets with different identifiers</li>
+</ul>
+<h3 id="4-encrypted-storage"><a class="header" href="#4-encrypted-storage">4. Encrypted Storage</a></h3>
+<ul>
+<li>Access encrypted persistent storage paths</li>
+<li>The stored data on the disk is encrypted using specific keys derived from the instance secret and a unique Realm Sealing Key</li>
+</ul>
+<h3 id="5-remote-provisioning"><a class="header" href="#5-remote-provisioning">5. Remote Provisioning</a></h3>
+<ul>
+<li>Securely download resources from remote servers after successful remote attestation procedure</li>
+<li>Establish RA-TLS (Remote Attestation combined with TLS) connections with provisioning servers</li>
+</ul>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<p>This library is automatically available to confidential services running in Islet realms within the CCPlugIn framework. Services can directly call the static methods provided by the <code>Cca</code> class to access Arm CCA functionality.</p>
+<p>For detailed API documentation, please refer to the generated Javadoc documentation.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="islet-cca-java-api"><a class="header" href="#islet-cca-java-api">Islet CCA Java API</a></h1>
+<style>
+:root {
+    --content-max-width: 80%;
+}
+
+.page-wrapper .page {
+    max-width: var(--content-max-width) !important;
+}
+
+iframe {
+    width: 120%;
+    height: 85vh;
+    border: none;
+}
+</style>
+<iframe src="libccplugin-islet-realm-javadoc/reference/index.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="android-mockups-library-libccplugin_android_mockups"><a class="header" href="#android-mockups-library-libccplugin_android_mockups">Android Mockups library (libccplugin_android_mockups)</a></h1>
+<h2 id="overview-3"><a class="header" href="#overview-3">Overview</a></h2>
+<p>This library provides Android Framework mockups that are used to run Android bound services inside a Realm Virtual Machine (VM) as part of the CCPlugIn framework. These mockups contain a limited set of Java classes from the Android Framework, enabling services to run in a Realm environment while maintaining compatibility with Android APIs.</p>
+<p>The library is specifically designed for confidential computing environments where Android services need to run in isolated Realms while communicating with the main Android OS via RPC Binder through the CCPlugIn framework.</p>
+<h2 id="purpose-1"><a class="header" href="#purpose-1">Purpose</a></h2>
+<p>The primary purpose of this library is to enable Android services to run within a Realm environment by providing mock implementations of key Android Framework classes. This allows:</p>
+<ul>
+<li>Running Android bound services in a confidential Realm as part of CCPlugIn</li>
+<li>Maintaining API compatibility with standard Android services</li>
+<li>Supporting Java Binder and Parcelable data types for inter-process communication</li>
+<li>Enabling communication between a Realm and host OS via RPC Binder through CCPlugIn</li>
+</ul>
+<h2 id="key-features-1"><a class="header" href="#key-features-1">Key Features</a></h2>
+<h3 id="1-android-framework-mockups"><a class="header" href="#1-android-framework-mockups">1. Android Framework Mockups</a></h3>
+<p>The library provides mock implementations of core Android Framework classes including:</p>
+<ul>
+<li><code>android.os.Binder</code> - Local implementation of IBinder for IPC</li>
+<li><code>android.os.IBinder</code> - Base interface for remotable objects</li>
+<li><code>android.os.Parcel</code> - Container for marshalled data</li>
+<li><code>android.os.Parcelable</code> - Interface for parcelable objects</li>
+<li><code>android.app.Service</code> - Base class for Android services</li>
+<li><code>android.content.Context</code> - Interface to global information about an application environment</li>
+<li><code>android.content.res.AssetManager</code> - Provides access to application assets</li>
+</ul>
+<h3 id="2-realm-vm-service-support"><a class="header" href="#2-realm-vm-service-support">2. Realm VM Service Support</a></h3>
+<ul>
+<li>Support for running Android bound services inside Realms</li>
+<li>Java Binder implementation for local IPC within the Realm</li>
+<li>Parcelable data types for efficient data serialization</li>
+<li>Asset management for accessing service resources</li>
+</ul>
+<h3 id="3-rpc-communication"><a class="header" href="#3-rpc-communication">3. RPC Communication</a></h3>
+<ul>
+<li>Communication with the main Android OS via RPC Binder</li>
+<li>Marshalling/unmarshalling of data between a Realm and host</li>
+<li>Support for standard Android IPC patterns</li>
+</ul>
+<h2 id="available-functionality"><a class="header" href="#available-functionality">Available Functionality</a></h2>
+<h3 id="core-android-ipc-components"><a class="header" href="#core-android-ipc-components">Core Android IPC Components</a></h3>
+<ol>
+<li><strong>Binder/IBinder</strong> - Full implementation of Android’s Binder IPC mechanism</li>
+<li><strong>Parcel/Parcelable</strong> - Complete parceling system for data serialization</li>
+<li><strong>Service</strong> - Simplified Base service class</li>
+<li><strong>Context</strong> - Simplified application context with basic system services</li>
+</ol>
+<h3 id="asset-management"><a class="header" href="#asset-management">Asset Management</a></h3>
+<ol>
+<li><strong>AssetManager</strong> - Access to application assets stored in <code>/mnt/apk/assets/</code></li>
+<li><strong>AssetFileDescriptor</strong> - File descriptor for asset files</li>
+<li><strong>ParcelFileDescriptor</strong> - File descriptor for general file access</li>
+</ol>
+<h2 id="limitations"><a class="header" href="#limitations">Limitations</a></h2>
+<p>Due to the Realm VM environment and RPC-based communication, certain Android Framework functionality is not available or limited:</p>
+<h3 id="1-security-and-credentials"><a class="header" href="#1-security-and-credentials">1. Security and Credentials</a></h3>
+<ul>
+<li><strong>No credential access</strong> - Cannot retrieve user credentials or process UIDs in a Realm context</li>
+<li><strong>Limited permission checking</strong> - Security permissions cannot be enforced in the same way as on the host</li>
+<li><strong>No authentication</strong> - Authentication mechanisms are not available across RPC boundary</li>
+</ul>
+<h3 id="2-file-descriptor-operations"><a class="header" href="#2-file-descriptor-operations">2. File Descriptor Operations</a></h3>
+<ul>
+<li><strong>No file descriptor passing</strong> - Cannot send file descriptors via RPC Binder</li>
+<li><strong>Limited file operations</strong> - File access is restricted to Realm filesystem</li>
+<li><strong>No direct file mapping</strong> - Cannot directly map host files into a Realm VM</li>
+</ul>
+<h3 id="3-system-services"><a class="header" href="#3-system-services">3. System Services</a></h3>
+<ul>
+<li><strong>No system service access</strong> - There is no access to Android system services like ActivityManager</li>
+<li><strong>No hardware access</strong> - Direct hardware access is not possible</li>
+<li><strong>No advanced system APIs</strong> - APIs requiring system-level permissions are not available</li>
+</ul>
+<h3 id="4-process-and-thread-management"><a class="header" href="#4-process-and-thread-management">4. Process and Thread Management</a></h3>
+<ul>
+<li><strong>No process control</strong> - Cannot manage processes or retrieve process information</li>
+<li><strong>Limited thread operations</strong> - Thread management is restricted</li>
+<li><strong>No inter-process synchronization</strong> - Cannot use host-level synchronization primitives</li>
+</ul>
+<h3 id="5-advanced-android-features"><a class="header" href="#5-advanced-android-features">5. Advanced Android Features</a></h3>
+<ul>
+<li><strong>No UI components</strong> - Activities, Views, and other UI elements are not available</li>
+<li><strong>No broadcast receivers</strong> - Cannot receive system broadcasts</li>
+<li><strong>No content providers</strong> - Content provider access is not supported</li>
+<li><strong>No notifications</strong> - Notification system is not available</li>
+<li><strong>No background services</strong> - Only bound services are supported</li>
+</ul>
+<h3 id="6-network-operations"><a class="header" href="#6-network-operations">6. Network Operations</a></h3>
+<ul>
+<li><strong>Limited network access</strong> - Network operations may be restricted by the Realm VM configuration</li>
+<li><strong>No socket passing</strong> - Cannot pass sockets via RPC Binder</li>
+</ul>
+<h2 id="usage-1"><a class="header" href="#usage-1">Usage</a></h2>
+<p>This library is automatically used when running Android services in a Realm VM environment. The mock implementations provide the necessary Android Framework APIs while ensuring compatibility with the VM’s isolated environment.</p>
+<p>Services should be implemented as standard Android bound services, extending the <code>android.app.Service</code> class and implementing the appropriate binder interface.</p>
+<h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
+<p>The library works by:</p>
+<ol>
+<li>Providing mock implementations of Android Framework classes</li>
+<li>Enabling services to use standard Android APIs within the Realm VM</li>
+<li>Marshalling data through Parcel objects for RPC communication</li>
+<li>Handling the translation between a Realm VM and host environments</li>
+</ol>
+<h2 id="security-considerations-1"><a class="header" href="#security-considerations-1">Security Considerations</a></h2>
+<ul>
+<li>Services running in the Realm VM are isolated from the host OS</li>
+<li>There can be only one service running in a Realm VM</li>
+<li>Communication is limited to predefined RPC interfaces</li>
+<li>No direct access to host resources or credentials</li>
+<li>Data is marshalled through Binder RPC channels</li>
+</ul>
+<h3 id="service-lifecycle-in-ccplugin"><a class="header" href="#service-lifecycle-in-ccplugin">Service Lifecycle in CCPlugIn</a></h3>
+<ol>
+<li>
+<p><strong>Realm VM Startup</strong>:</p>
+<ul>
+<li>Host app starts a Realm VM through VmManager API</li>
+<li>The Realm VM boots the kernel, initrd and the Microdroid system image</li>
+<li>The init process lanches the <code>Microdroid Manager</code> that loads and executes the <code>Microdroid Launcher</code></li>
+<li>The <code>Microdroid Launcher</code> loads the <code>NativeCCStub</code></li>
+<li><code>NativeCCStub</code> initializes JVM with Android mockups</li>
+<li>Service class is loaded from <code>/mnt/apk/assets/confidential-service.dex</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Service Creation and Binding</strong>:</p>
+<ul>
+<li>Host calls <code>onBindForTargetService()</code> through RealmService interface</li>
+<li><code>NativeCCStub::onCreate()</code> is called to create an instance of the Service class</li>
+<li><code>NativeCCStub::onBind()</code> calls service’s <code>onBind()</code> method on the Service’s instance</li>
+<li>Service returns its binder implementation</li>
+<li>Binder is converted from Java to native AIBinder for RPC</li>
+<li>the Binder RPC reference is returned to the host</li>
+</ul>
+</li>
+<li>
+<p><strong>Method Invocation</strong>:</p>
+<ul>
+<li>Host calls AIDL methods on the Binder RPC reference returned by the <code>onBindForTargetService()</code></li>
+<li>Calls are forwarded through vsock Binder RPC to VM</li>
+<li>Binder RPC and corresponding JNI layer invokes AIDL methods implemeneted by the Service</li>
+<li>Results are marshalled back through the same path</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="android-mockups-java-api"><a class="header" href="#android-mockups-java-api">Android Mockups Java API</a></h1>
+<style>
+:root {
+    --content-max-width: 80%;
+}
+
+.page-wrapper .page {
+    max-width: var(--content-max-width) !important;
+}
+
+iframe {
+    width: 120%;
+    height: 85vh;
+    border: none;
+}
+</style>
+<iframe src="libccplugin-android-mockups-javadoc/reference/index.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="vm-library-libccplugin_vm"><a class="header" href="#vm-library-libccplugin_vm">VM library (libccplugin_vm)</a></h1>
+<h2 id="overview-4"><a class="header" href="#overview-4">Overview</a></h2>
+<p>This library runs on <strong>Host Android</strong> and manages the <strong>Realm</strong> (aka, confidential virtual machine) lifecycle for CCPlugIn. It builds a <code>VirtualMachineConfig</code> from application assets (<code>assets/vm_configs/vm_config.json</code>), starts the VM through Android’s <code>VirtualMachineManager</code>, and when the payload is ready connects to <code>IRealmService</code> over vsock (same port as defined for the Realm service AIDL). Optional debug mode can capture VM console and log output via <code>Reader</code> into local files.</p>
+<p>It is the host-side counterpart to the Realm payload (<code>libccplugin_native</code>, mockups, and confidential service): the auto-generated <strong><code>CCProxyService</code></strong> uses <code>VmManager</code> to bring up the VM and obtain an <code>IRealmService</code> handle for forwarding AIDL calls into the confidential runtime.</p>
+<h2 id="purpose-2"><a class="header" href="#purpose-2">Purpose</a></h2>
+<p>The primary purpose of this library is to own confidential VM lifecycle on the host application side within the CCPlugIn framework. This allows the host to:</p>
+<ul>
+<li>Start and configure the confidential VM from the host application</li>
+<li>Receive asynchronous notification when the Realm binder is available (<code>VmServiceCallback</code>)</li>
+<li>Expose <code>IRealmService</code> for proxy/stub code once vsock connectivity is established</li>
+</ul>
+<h2 id="usage-2"><a class="header" href="#usage-2">Usage</a></h2>
+<p>In normal integration you <strong>do not</strong> instantiate <code>VmManager</code> in application code: <strong>CCPlugIn emits <code>CCProxyService</code></strong>, and that generated service uses <code>VmManager</code> internally to start the VM, wait for vsock/<code>IRealmService</code>, and bridge stubs and proxies. If you maintain a fork or custom generator output, use the same pattern inside your host-side proxy service and register a <code>VmServiceCallback</code> only where you must react to readiness or connection errors.</p>
+<p>For detailed API documentation, please refer to the generated Javadoc documentation.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="vm-library-java-api"><a class="header" href="#vm-library-java-api">VM library Java API</a></h1>
+<style>
+:root {
+    --content-max-width: 80%;
+}
+
+.page-wrapper .page {
+    max-width: var(--content-max-width) !important;
+}
+
+iframe {
+    width: 120%;
+    height: 85vh;
+    border: none;
+}
+</style>
+<iframe src="libccplugin-vm-javadoc/reference/index.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="log-library-libccplugin_log"><a class="header" href="#log-library-libccplugin_log">Log library (libccplugin_log)</a></h1>
+<h2 id="overview-5"><a class="header" href="#overview-5">Overview</a></h2>
+<p>This library provides logging functionality for the CCPlugIn framework, enabling applications to capture and store log output from the Realm and CC Service. It consists of two main components:</p>
+<ol>
+<li><strong>Logger</strong> - A class that writes log messages to a file in the application’s private storage</li>
+<li><strong>Reader</strong> - A Runnable class that reads data from an input stream (such as process output) and writes it to a Logger instance</li>
+</ol>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>This library is an internal component of CCPlugin that is used by the Java CC Proxy. The library is not directly used by Java CC Services code.</p>
+</blockquote>
+<h2 id="purpose-3"><a class="header" href="#purpose-3">Purpose</a></h2>
+<p>The primary purpose of this library is to provide a standardized way to capture, store, and manage log output within the CCPlugIn framework. This allows applications to:</p>
+<ul>
+<li>Capture console output from confidential VMs or processes</li>
+<li>Store log data in application-private files for later analysis</li>
+<li>Handle logging errors gracefully through Android’s logging system</li>
+<li>Provide a consistent interface for log management across CCPlugIn components</li>
+</ul>
+<h2 id="components-1"><a class="header" href="#components-1">Components</a></h2>
+<h3 id="logger"><a class="header" href="#logger">Logger</a></h3>
+<p>The <code>Logger</code> class provides functionality to create log files and write messages to them. It handles file creation and writing operations, with errors being logged to the Android log system.</p>
+<p>Key features:</p>
+<ul>
+<li>Creates log files in the application’s private file directory</li>
+<li>Appends messages to log files</li>
+<li>Handles I/O errors gracefully</li>
+<li>Uses Android context for file access</li>
+</ul>
+<h3 id="reader"><a class="header" href="#reader">Reader</a></h3>
+<p>The <code>Reader</code> class implements <code>Runnable</code> to read data from an input stream and post it to a logger. It’s designed to be used in a separate thread to continuously read from an input stream (such as process output) and write the data to a logger for storage.</p>
+<p>Key features:</p>
+<ul>
+<li>Implements Runnable for use in separate threads</li>
+<li>Continuously reads from input streams</li>
+<li>Writes each line of output to a Logger instance</li>
+<li>Handles thread interruption gracefully</li>
+<li>Logs errors using Android’s logging system</li>
+</ul>
+<h2 id="thread-safety"><a class="header" href="#thread-safety">Thread Safety</a></h2>
+<p>The Logger class is not thread-safe. If multiple threads need to write to the same log file, external synchronization is required. Each Logger instance should be used by a single thread, or proper synchronization mechanisms should be implemented.</p>
+<p>The Reader class is designed to be used in a single thread (as a Runnable), so thread safety is not a concern within the class itself.</p>
+<h2 id="error-handling-1"><a class="header" href="#error-handling-1">Error Handling</a></h2>
+<p>All I/O errors are caught and logged using Android’s Log utility. This ensures that logging operations don’t crash the application, while still providing visibility into any issues that may occur during logging operations.</p>
+<p>For detailed API documentation, please refer to the generated Javadoc documentation.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="log-library-java-api"><a class="header" href="#log-library-java-api">Log library Java API</a></h1>
+<style>
+:root {
+    --content-max-width: 80%;
+}
+
+.page-wrapper .page {
+    max-width: var(--content-max-width) !important;
+}
+
+iframe {
+    width: 120%;
+    height: 85vh;
+    border: none;
+}
+</style>
+<iframe src="libccplugin-log-javadoc/reference/index.html"></iframe>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="svg-pan-zoom-136752df.min.js"></script>
+        <script src="zoom-d2cae294.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-96415d6a.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

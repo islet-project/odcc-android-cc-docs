@@ -1,0 +1,13 @@
+android.app
+android.content
+android.content.res
+android.os
+android.text
+android.util
+android.util.proto
+android.webkit
+com.android.internal.os
+com.android.internal.ravenwood
+com.android.internal.util
+com.android.modules.utils
+

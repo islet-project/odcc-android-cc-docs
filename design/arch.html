@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Design - Documentation for Confidential Computing on Android</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom-e13467ec.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "../searchindex-84b1c532.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-cd9db688.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Documentation for Confidential Computing on Android</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="architecture-overview"><a class="header" href="#architecture-overview">Architecture Overview</a></h1>
+<p>This document describes how the system extends Android to support confidential computing by allowing selected app code to run inside a protected execution environment.</p>
+<p>The architecture enables an Android service to execute inside a Realm VM while still being exposed to client applications through the standard Binder IPC mechanism.
+From the perspective of the client, the service behaves like a regular Android bound service, while its implementation runs in an isolated environment.</p>
+<p><img src="../assets/android-cc-architecture-overview.png" alt="Architecture Diagram"></p>
+<h2 id="execution-domains"><a class="header" href="#execution-domains">Execution Domains</a></h2>
+<h3 id="normal-world-host-android"><a class="header" href="#normal-world-host-android">Normal World (Host Android)</a></h3>
+<p>Runs full Android, hosts the entry point for confidential services, manages the Realm VM lifecycle, and bridges communication with services running in the Realm.</p>
+<h3 id="realm-world-confidential-world-running-realm-vms"><a class="header" href="#realm-world-confidential-world-running-realm-vms">Realm World (Confidential World running Realm VMs)</a></h3>
+<p>Provides a hardware-assisted isolated environment for sensitive code and data.
+It runs a minimal Android-based runtime on Microdroid, initializing only the components needed for service execution, including a lightweight Dalvik VM for Java-based services.</p>
+<h2 id="components"><a class="header" href="#components">Components</a></h2>
+<h3 id="confidential-computing-components"><a class="header" href="#confidential-computing-components">Confidential Computing Components</a></h3>
+<p>These components are implemented as part of this system and provide the integration between Android and the confidential execution environment.</p>
+<ul>
+<li>
+<p><strong>CC Proxy</strong>:
+CC Proxy is an Android bound service that runs in the Normal World and serves as the entry point for all client interactions.
+It exposes the service interface using AIDL, allowing client applications to bind and invoke methods using standard Android IPC.
+Internally, CC Proxy is responsible for forwarding these requests to the Realm VM.
+In addition to request forwarding, CC Proxy manages the lifecycle of the Realm VM.
+It uses an internal helper (VmManager) to coordinate VM creation, startup, and connection to the Realm-side service.
+By handling both IPC bridging and lifecycle management, CC Proxy allows the confidential service to appear indistinguishable from a regular Android service.</p>
+</li>
+<li>
+<p><strong>CC Stub</strong>:
+CC Stub runs in the Realm World and acts as the server-side counterpart to CC Proxy.
+It receives incoming Binder RPC calls over vsock from the Normal World, and dispatches them to the appropriate service implementation.
+It also handles service initialization and binding within the Realm environment.
+This separation ensures that communication logic remains isolated from the actual business logic, allowing service implementations to remain simple and unchanged.</p>
+</li>
+<li>
+<p><strong>CC Service</strong>:
+CC Service is the confidential code implemented by app developers and runs inside the Realm VM.
+It follows the standard Android bound service model, with an AIDL-defined interface and a Java-based implementation.
+Because the execution model closely matches that of a regular Android service, existing code can often be reused with minimal or no modification.
+The main difference is that the service executes in a protected environment and is accessed remotely via Binder RPC.</p>
+</li>
+<li>
+<p><strong>Provisioning Client</strong>:
+The Provisioning Client runs inside the Realm World and is responsible for provisioning confidential data from external Provisioning Servers. It is controlled by the Microdroid Manager, which executes it once a CC Service requests the provisioning operation. During the provisioning operation, the Provisioning Client establishes a secure channel with an external Provisioning Server using the RA-TLS protocol (a protocol that combines Remote Attestation with TLS). Once the secure channel is established, the Provisioning Client downloads confidential data into the location inside the encrypted storage mount point requested by the CC Service.</p>
+</li>
+<li>
+<p><strong>encryptedstore</strong>:
+The encryptedstore is an AVF <a href="https://android.googlesource.com/platform/packages/modules/Virtualization/+/refs/tags/android-15.0.0_r8/guest/encryptedstore/">Encrypted Store</a> mechanism that provides CC Services with persistence and confidentiality of data at rest. The encrypted storage uses a virtual block device on the guest, which is backed by a disk image file stored on the host. In our solution, the encryption keys used by encryptedstore are derived from the Realm Sealing Key (which is rooted in a Hardware Unique Key and is bound to the Realm authority and identity data) and are also bound to the Microdroid and CC Service application authority data. This ensures that only a particular CC Service that saved the data in encryptedstore on a particular hardware platform can access it.</p>
+</li>
+</ul>
+<h3 id="platform-components"><a class="header" href="#platform-components">Platform Components</a></h3>
+<p>The system relies on several existing platform components that provide virtualization and isolation capabilities.</p>
+<ul>
+<li>
+<p><strong>Android Virtualization Service</strong>:
+The Virtualization Service is part of Android and provides APIs for managing virtual machines.
+In this architecture, it is used by CC Proxy to create and control the Realm VM. It handles tasks such as VM initialization, resource allocation, and lifecycle management.
+By relying on this existing service, the system avoids introducing a custom VM management layer and remains aligned with Android’s virtualization framework.</p>
+</li>
+<li>
+<p><strong>KVM/lkvm</strong>:
+KVM provides the underlying virtualization support at EL2.
+It is responsible for running the Realm VM and ensuring that it is properly isolated from the host system.
+With CCA-related extensions, KVM enables the creation of protected execution environments backed by hardware.</p>
+</li>
+<li>
+<p><strong>Realm Management Monitor (RMM)</strong>:
+lset-RMM is part of the confidential computing platform that supports the Arm CCA and is responsible for managing Realm execution.
+It handles operations such as Realm creation, execution, and termination, and works with the hypervisor to enforce isolation guarantees between the Normal World and the Realm World.</p>
+</li>
+<li>
+<p><strong>Microdroid</strong>:
+Microdroid is Android’s minimal guest image for protected VMs under the Android Virtualization Framework.
+A mini-Android OS for protected VMs (pVMs) that loads a main binary and shared libraries from an APK, activates APEX modules on the guest, builds native code against Bionic, and uses Binder RPC over vsock for IPC—rather than shipping full-device Android.</p>
+</li>
+</ul>
+<h3 id="aidl-engine-behind-the-scene"><a class="header" href="#aidl-engine-behind-the-scene">AIDL Engine Behind the Scene</a></h3>
+<p>The AIDL Engine has been extended with a new feature that automates the integration between the Normal World and the Realm World.</p>
+<p>When an AIDL interface is annotated with <code>@GenerateCCService</code>, the engine generates the necessary glue code, including the CC Proxy and CC Stub components.
+This removes the need for developers to manually implement cross-domain communication logic.</p>
+<p>As a result, developers can focus on defining service interfaces and implementing business logic, while the system handles the underlying infrastructure.</p>
+<h3 id="inter-world-communication"><a class="header" href="#inter-world-communication">Inter-world Communication</a></h3>
+<p>Communication between the Normal World and the Realm World is implemented using a layered Binder stack:
+Binder IPC between client applications and CC Proxy, and Binder RPC to extend Binder semantics across process and VM boundaries.
+This design allows the system to preserve the familiar Binder programming model while enabling communication across isolated environments.</p>
+<h2 id="service-interaction-diagrams-high-level"><a class="header" href="#service-interaction-diagrams-high-level">Service interaction diagrams (high level)</a></h2>
+<p>A typical request flows through the system as follows:</p>
+<h3 id="cc-service-startup"><a class="header" href="#cc-service-startup">CC Service startup</a></h3>
+<pre class="mermaid">sequenceDiagram
+    autonumber
+    box Normal World (Android)
+      participant C as Client App
+      participant P as CCProxyService
+      participant V as VmManager
+      participant VM as VirtualMachine
+      participant VS as VirtualizationService (Host)
+      participant VMM as VirtualMachineManager
+      participant VMGR as virtmgr
+    end
+    box Realm (Guest Realm VM hosting Microdroid)
+      participant MM as MicrodroidManager (Guest)
+      participant CCS as CCStub
+      participant CCSE as CCService (User Java)
+    end
+
+    %% ---------- Boot &amp; Connect Phase ----------
+    Note over P, V: CCPlugIn
+    Note over VM, VMM: framework-virtualization library
+    Note over CCS, CCSE: Microdroid launcher/payload
+    C-&gt;&gt;C: context.bindService()
+    C--&gt;&gt;P: onCreate() (via Activity Manager)
+    note over V: Initialize VirtualMachineConfig
+    P-&gt;&gt;V:setVmServiceCallback()
+    P-&gt;&gt;V:vmRun()
+    V-&gt;&gt;VMM:getOrCreate(VirtualMachineConfig, ...)
+    VMM-&gt;&gt;VM:create(VirtualMachineConfig, ...)
+    activate VM
+    VM-&gt;&gt;VS:getInstance()
+    VS-&gt;&gt;VS:nativeSpawn()
+    VS-)VMGR: spawn process
+    activate VMGR
+    VMGR--&gt;&gt;VS: clientFd
+    VS-&gt;&gt;VS:nativeConnect(clientFd)
+    VS--&gt;&gt;VM: VirtualMachine instance
+    Note over VM: Initialize InstanceId, instance and encryptedstore partitions
+    VM--&gt;&gt;VMM: VirtualMachine instance
+    deactivate VM
+    VMM--&gt;&gt;V: VirtualMachine instance
+    V-&gt;&gt;VM:run()
+    Note over VM: Prepare vm config, setup console for virtmgr
+    VM-&gt;&gt;VMGR:createVm(config, consolein, consoleout, ...)
+    VMGR--&gt;&gt;VM: IVirtualMachine instance
+    VM-&gt;&gt;VMGR: IVirtualMachine.registerCallback()
+    VM-&gt;&gt;VMGR: IVirtualMachine.start()
+    V-&gt;&gt;VM:setCallback()
+    VMGR-&gt;&gt;VMGR: start lkvm (with Arm CCA Realms enabled)
+    VMGR-&gt;&gt;MM: lkvm launches Microdroid in Realm VM
+    activate MM
+    MM-&gt;&gt;MM: try_run_payload()
+    MM-)CCS: spawn Microdroid Launcher/NativeStub
+    activate CCS
+    MM--&gt;&gt;VMGR: notifyPayloadStarted()
+    VMGR--&gt;&gt;VM: onPayloadStarted()
+    VM--&gt;&gt;V: onPayloadStarted()
+    CCS-)CCSE: load and initialize CCService (DEX)
+    activate CCSE
+    note left of CCS: The VSOCK port of the Service is exposed to the host
+    CCS--&gt;&gt;CCS: Setup Binder RPC/VSOCK server
+    CCSE--&gt;&gt;MM: AVmPayload_notifyPayloadReady()
+    MM--&gt;&gt;VMGR: notifyPayloadReady()
+    VMGR--&gt;&gt;VM: onPayloadReady()
+    VM--&gt;&gt;V: onPayloadReady()
+    V-&gt;&gt;VM: connectToVsockServer()
+    Note over VM, CCS: The CC Proxy Service establishes Binder RPC connection over VSOCK with the CC Stub obtaining IBinder reference to IRealmService Stub
+    VM--xCCS: Binder RPC over VSOCK
+    VM--&gt;&gt;V: IBinder reference to IRealmService
+    V-&gt;&gt;P: onVmServiceReady(IRealmService reference)
+    P-&gt;&gt;CCS: IRealmService.onBindForTargetService()
+    CCS-&gt;&gt;CCSE: onCreate()
+    CCS-&gt;&gt;CCSE: onBind()
+    CCSE--&gt;&gt;CCS: IBinder reference to CC Service
+    CCS--&gt;&gt;P: IBinder reference to CC Service
+    note left of P: CCProxyService got the IBinder reference to CC Service,&lt;br&gt;it is now ready to work
+    deactivate CCSE
+    deactivate CCS
+    deactivate MM
+    deactivate VMGR
+</pre>
+
+<h3 id="end-to-end-call-path-example-call"><a class="header" href="#end-to-end-call-path-example-call">End-to-end call path (example call)</a></h3>
+<p>From the client’s perspective, the interaction is identical to calling a regular Android service. The cross-domain communication is handled transparently by the system.</p>
+<pre class="mermaid">sequenceDiagram
+    autonumber
+    box Normal World (Android)
+      participant C as Client App
+      participant P as CCProxyService
+    end
+    box Realm (Guest Realm VM hosting Microdroid)
+      participant CCSE as CCService (User Java)
+    end
+
+    %% ---------- End to End call ----------
+    C-&gt;&gt;C: context.bindService(ServiceConnection instance)
+    C--&gt;&gt;P: onCreate() (via Activity Manager)
+    Note over P: Here are the steps related to startup of VM and CC Service inside VM&lt;br&gt;(details are on the CC Service startup diagram)
+    C-&gt;&gt;P: onBind() (via Activity Manager)
+    P--&gt;&gt;C: ServiceConnection.onServiceConnected(IExampleInterface proxy)(via Activity Manager)
+    C-&gt;&gt;C: Add button is clicked
+    C-&gt;&gt;C: Parse a and b values from text fields
+    Note over P: addInt() is implemented by CC Proxy's IExampleInterface.Stub
+    C-&gt;&gt;P: addInt(a, b)
+    activate P
+    Note over CCSE: addInt() is implemented by CC Service's IExampleInterface.Stub
+    P-&gt;&gt;CCSE: addInt(a, b)
+    activate CCSE
+    CCSE--&gt;&gt;P: result
+    deactivate CCSE
+    P--&gt;&gt;C: result
+    C--&gt;&gt;C: Display result
+    deactivate P
+</pre>
+
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../design/aidl-generated-components.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../design/aidl-generated-components.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../svg-pan-zoom-136752df.min.js"></script>
+        <script src="../zoom-d2cae294.js"></script>
+        <script src="../mermaid-eefea253.min.js"></script>
+        <script src="../mermaid-init-96415d6a.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
