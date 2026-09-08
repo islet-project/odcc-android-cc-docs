@@ -15,8 +15,8 @@
         <link rel="icon" href="../favicon-de23e50b.svg">
         <link rel="shortcut icon" href="../favicon-8114d1fc.png">
         <link rel="stylesheet" href="../css/variables-8adf115d.css">
-        <link rel="stylesheet" href="../css/general-2459343d.css">
-        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
         <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "light";
-            window.path_to_searchindex_js = "../searchindex-84b1c532.js";
+            window.path_to_searchindex_js = "../searchindex-914dbae5.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-cd9db688.js"></script>
+        <script src="../toc-d74066b2.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -187,7 +187,7 @@
 </ul>
 <p>The provisioning process leverages <strong>remote attestation</strong> to establish trust between the <strong>provisioning server</strong> and the confidential realm (a confidential VM in Arm CCA architecture) before any sensitive data is transferred. This ensures that assets are only delivered to verified, authorized execution environments, maintaining the confidentiality and integrity guarantees essential to confidential computing.</p>
 <h2 id="description-of-the-provisioning-process"><a class="header" href="#description-of-the-provisioning-process">Description of the Provisioning Process</a></h2>
-<p><img src="../assets/provisioning.png" title="large-view" alt="Provisioning flow">
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="../assets/provisioning.png" title="large-view" alt="Provisioning flow"><span class="img-wrapper"><img src="../assets/provisioning.png" title="large-view" alt="Provisioning flow"></span></label>
 <em>Figure 1: Provisioning flow</em></p>
 <p>The provisioning process implemented in our solution follows these key steps to securely deliver confidential assets to the execution environment:</p>
 <ol>
@@ -195,7 +195,7 @@
 <p><strong>Provisioning Request Initiation</strong>: A Java <strong>CC Service</strong> initiates the provisioning process by calling the <code>startProvisioning()</code> method on the <code>com.islet.Cca</code> class. The service provides the URL of the resource to be provisioned and specifies the destination path within the <strong>encrypted store</strong> mount point. The CC Service establishes a connection with the <code>vm_payload_service</code> (a component of Microdroid Manager) through the <a href="https://source.android.com/docs/core/virtualization/microdroid?hl=en#binder-rpc"><strong>Binder RPC</strong></a> interface. The provisioning request is then sent to the <code>vm_payload_service</code>, which launches a dedicated <strong>Provisioning Client</strong> with all necessary parameters, including the URL and destination path.</p>
 </li>
 <li>
-<p><strong>Secure Channel Establishment</strong>: The <strong>Provisioning Client</strong> establishes a secure channel with the <strong>Provisioning Server</strong> using the <strong>RA-TLS</strong> (Remote Attestation Transport Layer Security) protocol. Within the Realm, this step involves the RSI driver and Islet RMM to fetch the attestation token. On the provisioning server side, the <a href="https://github.com/veraison"><strong>Veraison</strong></a> verification service is used to verify the attestation evidence. Once remote attestation is successfully completed, a secure encrypted channel is established between the Provisioning Client and the Provisioning Server.</p>
+<p><strong>Secure Channel Establishment</strong>: The <strong>Provisioning Client</strong> establishes a secure channel with the <strong>Provisioning Server</strong> using the <strong>RA-TLS</strong> (Remote Attestation Transport Layer Security) protocol. Since the confidential VM (Realm) does not have direct access to the TCP/IP network, the connection is routed through the <strong>vsock proxy</strong> running on the host. The Provisioning Client initiates a vsock connection to the proxy, which then forwards the traffic to the external Provisioning Server over TCP/IP. Within the Realm, this step involves the RSI driver and Islet RMM to fetch the attestation token. On the provisioning server side, the <a href="https://github.com/veraison"><strong>Veraison</strong></a> verification service is used to verify the attestation evidence. Once remote attestation is successfully completed, a secure encrypted channel is established between the Provisioning Client and the Provisioning Server.</p>
 </li>
 <li>
 <p><strong>Asset Download and Storage</strong>: The <strong>Provisioning Client</strong> downloads the requested file from the <strong>Provisioning Server</strong> and securely saves it in the <strong>encrypted store</strong>, ensuring that the confidential asset remains protected at rest.</p>
@@ -252,11 +252,11 @@
 
         <script src="../elasticlunr-ef4e11c1.min.js"></script>
         <script src="../mark-09e88c2c.min.js"></script>
-        <script src="../searcher-c2a407aa.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
 
         <script src="../clipboard-1626706a.min.js"></script>
         <script src="../highlight-abc7f01d.js"></script>
-        <script src="../book-a0b12cfe.js"></script>
+        <script src="../book-609e4cb8.js"></script>
 
         <!-- Custom JS scripts -->
         <script src="../svg-pan-zoom-136752df.min.js"></script>

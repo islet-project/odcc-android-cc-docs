@@ -15,8 +15,8 @@
         <link rel="icon" href="../favicon-de23e50b.svg">
         <link rel="shortcut icon" href="../favicon-8114d1fc.png">
         <link rel="stylesheet" href="../css/variables-8adf115d.css">
-        <link rel="stylesheet" href="../css/general-2459343d.css">
-        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
         <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "light";
-            window.path_to_searchindex_js = "../searchindex-84b1c532.js";
+            window.path_to_searchindex_js = "../searchindex-914dbae5.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-cd9db688.js"></script>
+        <script src="../toc-d74066b2.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
 <h2 id="sealing-key-derivation"><a class="header" href="#sealing-key-derivation">Sealing Key Derivation</a></h2>
 <p>The derivation of secrets (encryption/sealing keys) in the Android Virtualization Framework (AVF) and Microdroid relies on the <a href="https://pigweed.googlesource.com/open-dice/+/HEAD/docs/specification.md"><strong>Open Profile for DICE</strong></a>  and <a href="https://pigweed.googlesource.com/open-dice/+/HEAD/docs/android.md"><strong>Android Profile for DICE</strong></a> specifications, which provide a standardized approach to cryptographic key derivation in layered software systems.</p>
 <p>In our solution, we combine the <strong>Islet RMM</strong> sealing key derivation process with the DICE Sealing key derivation in Microdroid Manager. The diagram in Figure 1 illustrates how the existing architecture has been adapted to implement our sealing key derivation mechanism within the Microdroid environment.</p>
-<p><img src="../assets/sealing-key-derivation.png" title="large-view" alt="Sealing key derivation">
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="../assets/sealing-key-derivation.png" title="large-view" alt="Sealing key derivation"><span class="img-wrapper"><img src="../assets/sealing-key-derivation.png" title="large-view" alt="Sealing key derivation"></span></label>
 <em>Figure 1: Sealing key derivation process in the original AVF and our solution</em></p>
 <h3 id="process-overview"><a class="header" href="#process-overview">Process Overview</a></h3>
 <p>The sealing key derivation process is a multi-stage procedure that ensures cryptographic keys are securely bound to specific realm and payload identities while maintaining resistance to unauthorized access and tampering. The process in Microdroid begins with the retrieval of a <strong>Realm Sealing Key</strong> from the <strong>Islet RMM</strong> through the <strong>Realm Service Interface</strong> (RSI) kernel driver by the first stage init process.</p>
@@ -297,11 +297,11 @@
 
         <script src="../elasticlunr-ef4e11c1.min.js"></script>
         <script src="../mark-09e88c2c.min.js"></script>
-        <script src="../searcher-c2a407aa.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
 
         <script src="../clipboard-1626706a.min.js"></script>
         <script src="../highlight-abc7f01d.js"></script>
-        <script src="../book-a0b12cfe.js"></script>
+        <script src="../book-609e4cb8.js"></script>
 
         <!-- Custom JS scripts -->
         <script src="../svg-pan-zoom-136752df.min.js"></script>

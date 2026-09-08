@@ -16,8 +16,8 @@
         <link rel="icon" href="favicon-de23e50b.svg">
         <link rel="shortcut icon" href="favicon-8114d1fc.png">
         <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-2459343d.css">
-        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
         <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
@@ -37,10 +37,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "light";
-            window.path_to_searchindex_js = "searchindex-84b1c532.js";
+            window.path_to_searchindex_js = "searchindex-914dbae5.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-cd9db688.js"></script>
+        <script src="toc-d74066b2.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -179,7 +179,7 @@
                         <h1 id="extending-confidential-computing-for-android"><a class="header" href="#extending-confidential-computing-for-android">Extending Confidential Computing for Android</a></h1>
 <p>Mobile applications increasingly handle sensitive data and security-critical workloads, including crypto wallets, digital identity, and on-device AI inference that leverages personal data to provide valuable, personalized experiences in users’ daily lives. As these use cases expand, stronger isolation guarantees than those offered by the traditional Trusted Execution Environments (TEEs) like Arm TrustZone are becoming necessary. This need applies not only to system and OEM-provided applications but also for the growing number of third-party apps installed from app stores that now routinely process sensitive information.</p>
 <p>To address this need and accelerate the adoption of confidential computing on end user devices, we extend the Android OS with confidential computing capabilities based on our <a href="https://github.com/islet-project/islet">Islet RMM</a> atop Arm CCA.</p>
-<p><img src="src/assets/apps_in_realm.png" alt="Conceptual View of Confidential Computing on Android"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="src/assets/apps_in_realm.png" alt="Conceptual View of Confidential Computing on Android"><span class="img-wrapper"><img src="src/assets/apps_in_realm.png" alt="Conceptual View of Confidential Computing on Android"></span></label></p>
 <p>Our approach enables Android application code to run inside a realm (confidential VM). The core concepts of our design are:</p>
 <ul>
 <li>
@@ -213,7 +213,7 @@ To achieve these goals, our design is built upon four core ideas.</p>
 <p>To preserve existing application behavior and interfaces, we use the Android Service class as the unit of code splitting, as it naturally provides modular and reusable components while supporting communication across process boundaries via AIDL-based Binder IPC.</p>
 <p>While AIDL interfaces typically rely on the Android kernel’s Binder IPC for inter-process communication, they do not support communication between the Normal World and the Realm World. To bridge this gap, we provide an annotation that transforms a standard AIDL interface into one capable of inter-world communication. Applying this annotation automatically generates (1) a Service in the Normal World that handles Binder IPC requests, and (2) a corresponding interface that leverages Android’s RPC Binder over sockets, enabling method calls across the two worlds.</p>
 <p>By running as Android services inside the Realm, confidential components can be invoked by existing client applications without any modifications, just like regular Android services. This approach ensures transparency, modularity, and seamless integration with existing applications.</p>
-<p><img src="src/assets/aidl_app_interface.png" alt="AIDL-based App Interface"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="src/assets/aidl_app_interface.png" alt="AIDL-based App Interface"><span class="img-wrapper"><img src="src/assets/aidl_app_interface.png" alt="AIDL-based App Interface"></span></label></p>
 <p>The detailed design of transparent invocation of realm services from the normal world is described in later chapters.</p>
 <h2 id="iii-seamless-integration-with-cc"><a class="header" href="#iii-seamless-integration-with-cc">III. Seamless Integration with CC</a></h2>
 <p>Our framework provides comprehensive integration with Arm CCA through the Islet RMM, enabling Android services to leverage hardware-rooted security primitives. Key CC services include remote attestation for runtime integrity verification, secure provisioning for trusted asset delivery, secret derivation with specialized sealing keys and encrypted storage for persistent data protection. Services can generate device-unique secrets through the hardware-protected key hierarchy and use sealing mechanisms to encrypt data that is cryptographically bound to the specific realm and platform configuration. This ensures that sealed data can only be unsealed by the same realm running on the same platform with the same security configuration.</p>
@@ -237,7 +237,7 @@ Instead, we construct a lightweight execution environment that:</p>
 <p>This document describes how the system extends Android to support confidential computing by allowing selected app code to run inside a protected execution environment.</p>
 <p>The architecture enables an Android service to execute inside a Realm VM while still being exposed to client applications through the standard Binder IPC mechanism.
 From the perspective of the client, the service behaves like a regular Android bound service, while its implementation runs in an isolated environment.</p>
-<p><img src="assets/android-cc-architecture-overview.png" alt="Architecture Diagram"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/android-cc-architecture-overview.png" alt="Architecture Diagram"><span class="img-wrapper"><img src="assets/android-cc-architecture-overview.png" alt="Architecture Diagram"></span></label></p>
 <h2 id="execution-domains"><a class="header" href="#execution-domains">Execution Domains</a></h2>
 <h3 id="normal-world-host-android"><a class="header" href="#normal-world-host-android">Normal World (Host Android)</a></h3>
 <p>Runs full Android, hosts the entry point for confidential services, manages the Realm VM lifecycle, and bridges communication with services running in the Realm.</p>
@@ -435,7 +435,7 @@ This design allows the system to preserve the familiar Binder programming model 
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="aidl-generated-components-for-confidential-computing-on-android"><a class="header" href="#aidl-generated-components-for-confidential-computing-on-android">AIDL-Generated Components for Confidential Computing on Android</a></h1>
 <p>This document explains which components are generated by the AIDL tool and why they are generated.</p>
-<p><img src="assets/aidl_app_interface_full.png" alt="AIDL Generataion Diagram"></p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/aidl_app_interface_full.png" alt="AIDL Generataion Diagram"><span class="img-wrapper"><img src="assets/aidl_app_interface_full.png" alt="AIDL Generataion Diagram"></span></label></p>
 <h2 id="1-source-annotation"><a class="header" href="#1-source-annotation">1) Source annotation</a></h2>
 <p>Code generation for confidential computing on Android starts from the AIDL annotation:</p>
 <pre><code class="language-java">@GenerateCCService(FQCN="com.example.RandGenService")
@@ -501,7 +501,7 @@ This design allows the system to preserve the familiar Binder programming model 
 <h2 id="sealing-key-derivation"><a class="header" href="#sealing-key-derivation">Sealing Key Derivation</a></h2>
 <p>The derivation of secrets (encryption/sealing keys) in the Android Virtualization Framework (AVF) and Microdroid relies on the <a href="https://pigweed.googlesource.com/open-dice/+/HEAD/docs/specification.md"><strong>Open Profile for DICE</strong></a>  and <a href="https://pigweed.googlesource.com/open-dice/+/HEAD/docs/android.md"><strong>Android Profile for DICE</strong></a> specifications, which provide a standardized approach to cryptographic key derivation in layered software systems.</p>
 <p>In our solution, we combine the <strong>Islet RMM</strong> sealing key derivation process with the DICE Sealing key derivation in Microdroid Manager. The diagram in Figure 1 illustrates how the existing architecture has been adapted to implement our sealing key derivation mechanism within the Microdroid environment.</p>
-<p><img src="assets/sealing-key-derivation.png" title="large-view" alt="Sealing key derivation">
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/sealing-key-derivation.png" title="large-view" alt="Sealing key derivation"><span class="img-wrapper"><img src="assets/sealing-key-derivation.png" title="large-view" alt="Sealing key derivation"></span></label>
 <em>Figure 1: Sealing key derivation process in the original AVF and our solution</em></p>
 <h3 id="process-overview"><a class="header" href="#process-overview">Process Overview</a></h3>
 <p>The sealing key derivation process is a multi-stage procedure that ensures cryptographic keys are securely bound to specific realm and payload identities while maintaining resistance to unauthorized access and tampering. The process in Microdroid begins with the retrieval of a <strong>Realm Sealing Key</strong> from the <strong>Islet RMM</strong> through the <strong>Realm Service Interface</strong> (RSI) kernel driver by the first stage init process.</p>
@@ -585,7 +585,7 @@ This design allows the system to preserve the familiar Binder programming model 
 </ul>
 <p>The provisioning process leverages <strong>remote attestation</strong> to establish trust between the <strong>provisioning server</strong> and the confidential realm (a confidential VM in Arm CCA architecture) before any sensitive data is transferred. This ensures that assets are only delivered to verified, authorized execution environments, maintaining the confidentiality and integrity guarantees essential to confidential computing.</p>
 <h2 id="description-of-the-provisioning-process"><a class="header" href="#description-of-the-provisioning-process">Description of the Provisioning Process</a></h2>
-<p><img src="assets/provisioning.png" title="large-view" alt="Provisioning flow">
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/provisioning.png" title="large-view" alt="Provisioning flow"><span class="img-wrapper"><img src="assets/provisioning.png" title="large-view" alt="Provisioning flow"></span></label>
 <em>Figure 1: Provisioning flow</em></p>
 <p>The provisioning process implemented in our solution follows these key steps to securely deliver confidential assets to the execution environment:</p>
 <ol>
@@ -593,7 +593,7 @@ This design allows the system to preserve the familiar Binder programming model 
 <p><strong>Provisioning Request Initiation</strong>: A Java <strong>CC Service</strong> initiates the provisioning process by calling the <code>startProvisioning()</code> method on the <code>com.islet.Cca</code> class. The service provides the URL of the resource to be provisioned and specifies the destination path within the <strong>encrypted store</strong> mount point. The CC Service establishes a connection with the <code>vm_payload_service</code> (a component of Microdroid Manager) through the <a href="https://source.android.com/docs/core/virtualization/microdroid?hl=en#binder-rpc"><strong>Binder RPC</strong></a> interface. The provisioning request is then sent to the <code>vm_payload_service</code>, which launches a dedicated <strong>Provisioning Client</strong> with all necessary parameters, including the URL and destination path.</p>
 </li>
 <li>
-<p><strong>Secure Channel Establishment</strong>: The <strong>Provisioning Client</strong> establishes a secure channel with the <strong>Provisioning Server</strong> using the <strong>RA-TLS</strong> (Remote Attestation Transport Layer Security) protocol. Within the Realm, this step involves the RSI driver and Islet RMM to fetch the attestation token. On the provisioning server side, the <a href="https://github.com/veraison"><strong>Veraison</strong></a> verification service is used to verify the attestation evidence. Once remote attestation is successfully completed, a secure encrypted channel is established between the Provisioning Client and the Provisioning Server.</p>
+<p><strong>Secure Channel Establishment</strong>: The <strong>Provisioning Client</strong> establishes a secure channel with the <strong>Provisioning Server</strong> using the <strong>RA-TLS</strong> (Remote Attestation Transport Layer Security) protocol. Since the confidential VM (Realm) does not have direct access to the TCP/IP network, the connection is routed through the <strong>vsock proxy</strong> running on the host. The Provisioning Client initiates a vsock connection to the proxy, which then forwards the traffic to the external Provisioning Server over TCP/IP. Within the Realm, this step involves the RSI driver and Islet RMM to fetch the attestation token. On the provisioning server side, the <a href="https://github.com/veraison"><strong>Veraison</strong></a> verification service is used to verify the attestation evidence. Once remote attestation is successfully completed, a secure encrypted channel is established between the Provisioning Client and the Provisioning Server.</p>
 </li>
 <li>
 <p><strong>Asset Download and Storage</strong>: The <strong>Provisioning Client</strong> downloads the requested file from the <strong>Provisioning Server</strong> and securely saves it in the <strong>encrypted store</strong>, ensuring that the confidential asset remains protected at rest.</p>
@@ -1996,11 +1996,11 @@ iframe {
 
         <script src="elasticlunr-ef4e11c1.min.js"></script>
         <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-c2a407aa.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
         <script src="clipboard-1626706a.min.js"></script>
         <script src="highlight-abc7f01d.js"></script>
-        <script src="book-a0b12cfe.js"></script>
+        <script src="book-609e4cb8.js"></script>
 
         <!-- Custom JS scripts -->
         <script src="svg-pan-zoom-136752df.min.js"></script>
