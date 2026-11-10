@@ -1,0 +1,69 @@
+Documentation for Confidential Computing on Android
+Copyright 2026 The Islet Project Authors
+
+This product includes software developed by the Islet Project,
+https://github.com/islet-project/odcc-android-cc-docs, licensed under the
+Apache License, Version 2.0 (see the LICENSE file).
+
+
+Third-party components
+======================
+
+The documentation site bundles the following third-party JavaScript files. They
+are NOT licensed under the Apache License, Version 2.0: each keeps the license
+listed below, and the copyright notices of the upstream projects are retained
+in the files themselves.
+
+  mermaid.min.js
+    Mermaid v11.6.0, MIT License, Copyright (c) 2014 - 2022 Knut Sveidqvist.
+    https://github.com/mermaid-js/mermaid
+    The single-file bundle also embeds the upstream modules of Mermaid, each
+    under its own license. Among them:
+      - DOMPurify 3.2.4, dual-licensed Apache License 2.0 or Mozilla Public
+        License 2.0, Copyright (c) Cure53 and other contributors
+        (https://github.com/cure53/DOMPurify).
+      - stylis, MIT License, Copyright (c) 2013-2014 Ralf S. Engelschall
+        (https://github.com/thysultan/stylis).
+      - lodash, MIT License, Copyright OpenJS Foundation and other contributors
+        (https://lodash.com).
+    The remaining dependencies (d3, dagre-d3-es, cytoscape, dayjs, katex,
+    marked, roughjs, uuid, khroma, ts-dedent, @braintree/sanitize-url, ...) are
+    MIT or ISC licensed; their complete list and license texts are maintained
+    upstream: https://github.com/mermaid-js/mermaid/blob/develop/LICENSE
+
+  svg-pan-zoom.min.js
+    svg-pan-zoom v3.6.2, BSD-2-Clause (per the upstream LICENSE file),
+    Copyright (c) 2009-2010 Andrea Leofreddi and the svg-pan-zoom contributors.
+    https://github.com/bumbu/svg-pan-zoom
+    The file header carries the original BSD notice (including its
+    non-endorsement paragraph) and is kept unmodified.
+
+  mermaid-init.js
+    Adapted from mermaid-init.js of the mdBook Mermaid preprocessor
+    (mdbook-mermaid), Mozilla Public License, v. 2.0,
+    https://github.com/betyland/mdbook-mermaid. The MPL notice is retained at
+    the top of the file and applies to that file; we only changed the Mermaid
+    initialization options and added the diagram sizing and svg-pan-zoom
+    integration.
+
+
+Files owned by this project
+===========================
+
+Everything that is not listed above — the Markdown sources and images under
+`src/` (except the `src/implement/*` symlinks into the `dependencies/`
+submodules), `book.toml`, `custom.css`, `zoom.js` and `.github/` — was written
+for this project and is licensed under the Apache License, Version 2.0.
+
+
+Not covered by this license
+===========================
+
+  dependencies/ are git submodules that point at other islet-project
+  repositories (odcc-ccplugin, odcc-example-aosp, odcc-aosp-system-sepolicy,
+  odcc-islet-script-qemu-rme, odcc-tf-lite-bert-qa). Each of them keeps the
+  license declared in its own repository.
+
+  The build tooling (mdBook and mdbook-mermaid, Mozilla Public License 2.0) is
+  downloaded at build time by .github/workflows/pages.yml; it is used to render
+  the site and is not redistributed by this repository.

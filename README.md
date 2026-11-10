@@ -74,3 +74,13 @@ As a concrete example, we present an end-to-end confidential computing workflow 
 This repository hosts the source for the documentation site for confidential computing on Android.
 
 📚 [Visit the docs](https://islet-project.github.io/odcc-android-cc-docs/intro.html)
+
+# License
+
+The documentation sources and the scripts of this repository are licensed under the
+Apache License, Version 2.0 — see [LICENSE](LICENSE).
+
+The repository also bundles third-party JavaScript files (`mermaid.min.js`,
+`svg-pan-zoom.min.js`, `mermaid-init.js`) that stay under their own upstream licenses;
+they are listed in [NOTICE](NOTICE) together with the `dependencies/` submodules, which
+are covered by the license of their own repositories.
